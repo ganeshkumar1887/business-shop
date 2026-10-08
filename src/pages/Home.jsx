@@ -7,9 +7,7 @@ import ProductGrid from '../components/ProductGrid';
 import GiftShopSection from '../components/GiftShopSection';
 import CustomDesignSection from '../components/CustomDesignSection';
 import WeddingSection from '../components/WeddingSection';
-import GallerySection from '../components/GallerySection';
 import WhyChooseUs from '../components/WhyChooseUs';
-import HowToOrder from '../components/HowToOrder';
 import Testimonials from '../components/Testimonials';
 import AboutSection from '../components/AboutSection';
 import ContactSection from '../components/ContactSection';
@@ -35,14 +33,8 @@ export default function Home({ onQuickView, onOrderNow }) {
       {/* Marriage & Wedding Showcase */}
       <WeddingSection />
 
-      {/* Recent Work Gallery */}
-      <GallerySection limit={8} />
-
       {/* Why Choose Us */}
       <WhyChooseUs />
-
-      {/* How To Order */}
-      <HowToOrder />
 
       {/* Customer Testimonials */}
       <Testimonials />

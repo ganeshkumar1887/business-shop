@@ -223,23 +223,23 @@ export default function Hero() {
 
           </div>
 
-          {/* Action CTAs & Highlights Card with Soft Warm Glow */}
-          <div className="w-full max-w-3xl bg-white/80 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-brand-gold-400/30 shadow-lg space-y-4">
+          {/* Action CTAs & Highlights Card (Equal width matching slider above) */}
+          <div className="w-full max-w-5xl lg:max-w-6xl bg-white/85 backdrop-blur-md rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 border border-brand-gold-400/30 shadow-lg space-y-4 sm:space-y-5">
             
-            <div>
-              <h2 className="text-lg sm:text-2xl font-serif font-bold text-brand-purple-950">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-serif font-black text-brand-purple-950">
                 Make Every Celebration Special ✨
               </h2>
-              <p className="text-xs sm:text-sm text-slate-700 mt-1 font-medium">
+              <p className="text-xs sm:text-sm md:text-base text-slate-700 mt-1.5 font-medium">
                 दूल्हा-दुल्हन स्टेज नेम बोर्ड्स, वेडिंग वेलकम ईजल बोर्ड्स, बर्थडे कटआउट्स और कस्टमाइज्ड गिफ्ट्स।
               </p>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-1 max-w-4xl mx-auto">
               <Link
                 to="/products"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-purple-900 via-brand-purple-800 to-brand-rose-700 hover:from-brand-purple-950 hover:to-brand-rose-800 text-white font-bold px-7 py-3 rounded-xl shadow-md hover:shadow-lg transition-all text-xs sm:text-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-purple-900 via-brand-purple-800 to-brand-rose-700 hover:from-brand-purple-950 hover:to-brand-rose-800 text-white font-bold px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all text-xs sm:text-sm cursor-pointer"
               >
                 <span>Explore Products</span>
                 <ArrowRight className="w-4 h-4" />
@@ -249,7 +249,7 @@ export default function Hero() {
                 href={getGeneralInquiryUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-7 py-3 rounded-xl shadow-md hover:shadow-lg transition-all text-xs sm:text-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all text-xs sm:text-sm cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>Order on WhatsApp</span>
@@ -257,7 +257,7 @@ export default function Hero() {
 
               <Link
                 to="/marriage-designs"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-gold-50 hover:bg-brand-gold-100 text-brand-purple-950 font-bold px-6 py-3 rounded-xl border border-brand-gold-300 transition-all text-xs sm:text-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-gold-50 hover:bg-brand-gold-100 text-brand-purple-950 font-bold px-7 py-3.5 rounded-xl border border-brand-gold-300 transition-all text-xs sm:text-sm cursor-pointer"
               >
                 <Wand2 className="w-4 h-4 text-brand-gold-700" />
                 <span>Design Custom Board</span>
@@ -265,21 +265,21 @@ export default function Hero() {
             </div>
 
             {/* Micro Trust Factors */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-brand-cream-300 text-slate-800 text-[10px] sm:text-xs font-semibold">
-              <div className="flex items-center justify-center gap-1.5 p-1.5 bg-brand-cream-50 rounded-lg">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-brand-cream-300 text-slate-800 text-[11px] sm:text-xs font-bold max-w-4xl mx-auto">
+              <div className="flex items-center justify-center gap-1.5 p-2 bg-brand-cream-50/90 border border-brand-cream-200 rounded-xl shadow-2xs">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>100% Real Work</span>
               </div>
-              <div className="flex items-center justify-center gap-1.5 p-1.5 bg-brand-cream-50 rounded-lg">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <div className="flex items-center justify-center gap-1.5 p-2 bg-brand-cream-50/90 border border-brand-cream-200 rounded-xl shadow-2xs">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Hindi &amp; English</span>
               </div>
-              <div className="flex items-center justify-center gap-1.5 p-1.5 bg-brand-cream-50 rounded-lg">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <div className="flex items-center justify-center gap-1.5 p-2 bg-brand-cream-50/90 border border-brand-cream-200 rounded-xl shadow-2xs">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Stage Specialists</span>
               </div>
-              <div className="flex items-center justify-center gap-1.5 p-1.5 bg-brand-cream-50 rounded-lg">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <div className="flex items-center justify-center gap-1.5 p-2 bg-brand-cream-50/90 border border-brand-cream-200 rounded-xl shadow-2xs">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Fast Quote</span>
               </div>
             </div>
