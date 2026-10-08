@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-cream-50 text-slate-800 font-sans;
+  }
+  
+  h1, h2, h3, .font-heading {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF5EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8B4FE;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A855F7;
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.glass-panel-dark {
+  background: rgba(46, 16, 101, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 235, 217, 0.8);
+}
+
+/* Golden glitter gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 25%, #FBBF24 50%, #D97706 75%, #92400E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-royal-gradient {
+  background: linear-gradient(135deg, #4C1D95 0%, #7E22CE 50%, #BE185D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Royal Indian Wedding Festive Background Motif */
+.bg-mandala-pattern {
+  background-color: #FAF5EC;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(234, 179, 8, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 10% 20%, rgba(147, 51, 234, 0.07) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(225, 29, 72, 0.07) 0%, transparent 40%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23CA8A04' fill-opacity='0.06' fill-rule='evenodd'%3E%3Cpath d='M30 30L15 15l15-15 15 15-15 15zm0 0l15 15-15 15-15-15 15-15zM0 30l15-15L0 0v30zm60 0L45 15l15-15v30zM0 30l15 15L0 60V30zm60 0L45 45l15 15V30z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.bg-festive-mesh {
+  background: 
+    radial-gradient(at 0% 0%, rgba(254, 240, 138, 0.35) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(244, 114, 182, 0.25) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(233, 213, 255, 0.3) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(253, 224, 71, 0.2) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(216, 180, 254, 0.3) 0px, transparent 50%),
+    linear-gradient(180deg, #FFFDF7 0%, #FAF5EC 50%, #F5EBE0 100%);
+}
+
+/* Thermocol 3D preview styles */
+.thermocol-cutout-preview {
+  text-shadow: 2px 2px 0px #fff, 4px 4px 0px rgba(0,0,0,0.12), 0px 8px 15px rgba(0,0,0,0.15);
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.1));
+}
+
+.thermocol-glitter-gold {
+  background: linear-gradient(45deg, #FFE082, #FFD54F, #FFF8E1, #FFCA28, #FFE082);
+  background-size: 200% 200%;
+  animation: shimmer 3s ease infinite;
+}
+
+.thermocol-glitter-rose {
+  background: linear-gradient(45deg, #FF80AB, #FF4081, #F8BBD0, #F50057, #FF80AB);
+  background-size: 200% 200%;
+  animation: shimmer 3s ease infinite;
+}
+
+.thermocol-glitter-silver {
+  background: linear-gradient(45deg, #E0E0E0, #F5F5F5, #FFFFFF, #BDBDBD, #E0E0E0);
+  background-size: 200% 200%;
+  animation: shimmer 3s ease infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
