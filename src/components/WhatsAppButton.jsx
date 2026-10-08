@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MessageCircle, X, Sparkles, Send } from 'lucide-react';
 import { SHOP_CONFIG } from '../data/config';
+import { logoImg } from '../data/images';
 import { getGeneralInquiryUrl, getWhatsAppUrl } from '../utils/whatsapp';
 
 export default function WhatsAppButton() {
@@ -39,8 +40,12 @@ export default function WhatsAppButton() {
           {/* Header */}
           <div className="bg-gradient-to-r from-emerald-600 to-teal-700 p-4 text-white flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold text-lg">
-                🎁
+              <div className="w-10 h-10 rounded-xl overflow-hidden border border-white/40 shadow-sm shrink-0 bg-white p-0.5">
+                <img 
+                  src={logoImg} 
+                  alt={SHOP_CONFIG.shortName} 
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
               <div>
                 <h4 className="font-bold text-sm leading-tight">{SHOP_CONFIG.shortName}</h4>

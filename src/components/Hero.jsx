@@ -15,7 +15,7 @@ import {
   Star
 } from 'lucide-react';
 import { SHOP_CONFIG } from '../data/config';
-import { HERO_SLIDES } from '../data/images';
+import { HERO_SLIDES, weddingCoupleImg, logoImg } from '../data/images';
 import { getGeneralInquiryUrl } from '../utils/whatsapp';
 
 export default function Hero() {
@@ -58,31 +58,65 @@ export default function Hero() {
         {/* Main Showcase Layout */}
         <div className="flex flex-col items-center text-center space-y-4 sm:space-y-5">
           
-          {/* Top Shop Branding & Tagline (Moved Up & Compact) */}
-          <div className="space-y-1.5 max-w-3xl mx-auto">
+          {/* Top Shop Branding with Wedding Couple Artwork on Left */}
+          <div className="w-full max-w-5xl lg:max-w-6xl mx-auto px-2 sm:px-4">
             
-            {/* Festive Auspicious Pill */}
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-brand-purple-100 via-brand-rose-100 to-brand-gold-100 border border-brand-purple-300/60 text-brand-purple-950 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-brand-gold-600 animate-spin-slow" />
-              <span>शादी, सालगिरह व जन्मदिन स्पेशल थर्मोकोल नेम बोर्ड्स</span>
-              <Sparkles className="w-3.5 h-3.5 text-brand-gold-600 animate-spin-slow" />
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-8">
+              
+              {/* Left Side: Traditional Wedding Couple Illustration */}
+              <div className="relative shrink-0 group">
+                <div className="w-24 h-32 sm:w-28 sm:h-36 md:w-36 md:h-44 lg:w-40 lg:h-52 rounded-2xl sm:rounded-3xl overflow-hidden border-2 sm:border-3 border-brand-gold-400/80 shadow-lg shadow-brand-purple-950/20 bg-white/60 backdrop-blur-xs p-1 group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500">
+                  <img
+                    src={weddingCoupleImg}
+                    alt="Traditional Indian Wedding Couple"
+                    className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
+                    loading="eager"
+                  />
+                  {/* Subtle inner golden ring */}
+                  <div className="absolute inset-0 rounded-2xl sm:rounded-3xl ring-1 ring-inset ring-amber-400/40 pointer-events-none"></div>
+                </div>
+
+                {/* Floating Auspicious Badge */}
+                <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] sm:text-xs font-outfit font-black px-2.5 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-600 text-white shadow-md border border-amber-300">
+                  शुभ विवाह ✨
+                </span>
+              </div>
+
+              {/* Center / Right: Shop Branding & Titles */}
+              <div className="flex-1 text-center md:text-left space-y-2 sm:space-y-3 pt-2 md:pt-0">
+                
+                {/* Festive Auspicious Pill */}
+                <div className="inline-flex items-center gap-2 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-brand-purple-100/90 via-brand-rose-100/90 to-brand-gold-100/90 border border-brand-purple-300/70 text-brand-purple-950 text-xs sm:text-sm md:text-base font-outfit font-extrabold uppercase tracking-wider shadow-sm backdrop-blur-xs">
+                  <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-gold-600 animate-spin-slow shrink-0" />
+                  <span className="truncate">शादी, सालगिरह व जन्मदिन स्पेशल थर्मोकोल नेम बोर्ड्स</span>
+                  <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-gold-600 animate-spin-slow shrink-0" />
+                </div>
+
+                {/* Regal Shop Name */}
+                <h1 className="font-serif font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight sm:tracking-wide text-brand-purple-950 leading-none py-1 select-none">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple-950 via-brand-purple-800 to-brand-rose-700 drop-shadow-[0_4px_16px_rgba(76,29,149,0.18)]">
+                    {SHOP_CONFIG.shortName}
+                  </span>
+                </h1>
+
+                {/* Tagline with Decorative Gold Filigree Bars */}
+                <div className="flex items-center justify-center md:justify-start gap-3 sm:gap-4 w-full pt-1">
+                  <span className="w-8 sm:w-16 md:w-24 h-[2px] sm:h-[3px] bg-gradient-to-r from-brand-gold-400 to-brand-gold-600 rounded-full"></span>
+                  <p className="font-serif font-black text-sm sm:text-xl md:text-2xl lg:text-3xl text-brand-rose-600 tracking-widest uppercase drop-shadow-xs whitespace-nowrap">
+                    {SHOP_CONFIG.tagline}
+                  </p>
+                  <span className="flex-1 max-w-[60px] sm:max-w-[120px] h-[2px] sm:h-[3px] bg-gradient-to-l from-transparent via-brand-gold-400 to-brand-gold-600 rounded-full"></span>
+                </div>
+
+                {/* Sub-tagline */}
+                <p className="text-xs sm:text-sm md:text-base font-outfit font-semibold text-slate-600 tracking-wide">
+                  {SHOP_CONFIG.subTagline}
+                </p>
+
+              </div>
+
             </div>
 
-            {/* Regal Shop Name */}
-            <h1 className="font-serif font-black text-3xl sm:text-5xl md:text-6xl tracking-tight text-brand-purple-950 drop-shadow-xs leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple-950 via-brand-purple-800 to-brand-rose-700">
-                {SHOP_CONFIG.shortName}
-              </span>
-            </h1>
-
-            {/* Tagline with Decorative Gold Filigree Bars */}
-            <div className="flex items-center justify-center gap-2.5">
-              <span className="h-[2px] w-8 sm:w-16 bg-gradient-to-r from-transparent via-brand-gold-500 to-brand-gold-600 rounded-full"></span>
-              <p className="font-serif font-extrabold text-sm sm:text-xl md:text-2xl text-brand-rose-600 tracking-wider uppercase drop-shadow-xs">
-                {SHOP_CONFIG.tagline}
-              </p>
-              <span className="h-[2px] w-8 sm:w-16 bg-gradient-to-l from-transparent via-brand-gold-500 to-brand-gold-600 rounded-full"></span>
-            </div>
           </div>
 
           {/* Centerpiece Image Showcase Slider (Wider max-w-6xl with Perfect Fitting) */}

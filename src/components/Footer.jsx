@@ -10,6 +10,7 @@ import {
   Facebook 
 } from 'lucide-react';
 import { SHOP_CONFIG } from '../data/config';
+import { logoImg } from '../data/images';
 import { getGeneralInquiryUrl } from '../utils/whatsapp';
 
 export default function Footer() {
@@ -25,8 +26,12 @@ export default function Footer() {
           {/* Brand & Overview */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-purple-700 to-brand-rose-600 flex items-center justify-center border border-brand-gold-400/40 shadow-sm">
-                <Sparkles className="w-5 h-5 text-brand-gold-300" />
+              <div className="w-12 h-12 rounded-2xl overflow-hidden border-2 border-brand-gold-400/60 shadow-md bg-white/10 shrink-0 p-0.5">
+                <img 
+                  src={logoImg} 
+                  alt={SHOP_CONFIG.shopName} 
+                  className="w-full h-full object-cover rounded-xl"
+                />
               </div>
               <div>
                 <h3 className="font-serif font-extrabold text-xl text-white">

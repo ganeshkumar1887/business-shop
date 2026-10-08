@@ -17,6 +17,7 @@ import {
   Flame
 } from 'lucide-react';
 import { SHOP_CONFIG } from '../data/config';
+import { logoImg } from '../data/images';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { getGeneralInquiryUrl } from '../utils/whatsapp';
@@ -127,15 +128,19 @@ export default function Navbar({ onOpenSearch }) {
           <div className="flex items-center justify-between gap-4">
             
             {/* Brand Logo & Shop Title */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-brand-purple-800 via-brand-purple-900 to-brand-rose-700 flex items-center justify-center shadow-md shadow-brand-purple-900/20 group-hover:scale-105 transition-transform duration-300 border border-brand-gold-400/40">
-                <Sparkles className="w-6 h-6 text-brand-gold-300 animate-pulse-slow" />
+            <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+              <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl overflow-hidden shadow-md shadow-brand-purple-950/20 group-hover:scale-105 group-hover:shadow-lg transition-all duration-300 border-2 border-brand-gold-400/60 shrink-0 bg-brand-purple-950 flex items-center justify-center p-0.5">
+                <img 
+                  src={logoImg} 
+                  alt={SHOP_CONFIG.shopName} 
+                  className="w-full h-full object-cover rounded-xl"
+                />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif font-bold text-lg sm:text-xl md:text-2xl text-brand-purple-950 leading-tight tracking-tight group-hover:text-brand-purple-800 transition-colors">
+                <span className="font-serif font-black text-lg sm:text-xl md:text-2xl text-brand-purple-950 leading-tight tracking-tight group-hover:text-brand-purple-800 transition-colors">
                   {SHOP_CONFIG.shortName}
                 </span>
-                <span className="text-[11px] sm:text-xs font-semibold text-brand-rose-600 tracking-wider uppercase">
+                <span className="text-[11px] sm:text-xs font-bold text-brand-rose-600 tracking-wider uppercase">
                   {SHOP_CONFIG.tagline}
                 </span>
               </div>

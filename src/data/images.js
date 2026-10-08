@@ -1,8 +1,12 @@
 // Standard local assets for 100% portable Vercel and local production builds
+import logoImg from '../assets/images/logo.png'; // Official Shree Bhagwan Logo
+import weddingCoupleImg from '../assets/images/wedding_couple_banner.png'; // Traditional Indian Wedding Couple
 import heroImg2 from '../assets/images/media_1791386892793.jpg'; // Dr Digvijay Sang Dr Meenu Mohan
 import heroImg3 from '../assets/images/media_1791386873261.jpg'; // Vikas Sang Babita
 import heroImg4 from '../assets/images/media_1791386857823.jpg'; // Dual hearts with roses
 import heroImg5 from '../assets/images/media_1791386837006.jpg'; // Heart with blue lotus roses
+
+export { logoImg, weddingCoupleImg };
 
 export const HERO_SLIDES = [
   {
