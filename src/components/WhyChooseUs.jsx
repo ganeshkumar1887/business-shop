@@ -70,14 +70,14 @@ export default function WhyChooseUs() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-gold-100 text-brand-gold-900 border border-brand-gold-200 text-xs font-bold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-brand-gold-100 text-brand-gold-900 border border-brand-gold-300 text-xs font-outfit font-extrabold uppercase tracking-wider mb-3 shadow-2xs">
             <Sparkles className="w-3.5 h-3.5 text-brand-gold-700" />
             <span>श्री भगवान थर्मोकोल आर्ट की खासियत</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-brand-purple-950 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-cinzel font-black text-brand-purple-950 tracking-tight">
             हमें क्यों चुनें? (Why Choose Us)
           </h2>
-          <p className="text-slate-600 text-base sm:text-lg mt-3">
+          <p className="text-slate-600 font-outfit text-base sm:text-lg mt-3 font-normal">
             सच्ची लगन, बेहतरीन कारीगरी और २० वर्षों के भरोसे के साथ हर उत्सव को यादगार बनाते हैं।
           </p>
         </div>
@@ -89,25 +89,25 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={idx}
-                className="bg-brand-cream-50/80 hover:bg-white rounded-3xl p-6 border border-brand-cream-300 hover:border-brand-purple-300 shadow-sm hover:shadow-luxury transition-all duration-300 group hover:-translate-y-1"
+                className="bg-brand-cream-50/80 hover:bg-white rounded-3xl p-6 border-2 border-brand-cream-300 hover:border-brand-purple-300 shadow-sm hover:shadow-luxury transition-all duration-300 group hover:-translate-y-1"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-12 h-12 rounded-2xl bg-white border border-brand-cream-300 flex items-center justify-center text-brand-purple-900 shadow-xs group-hover:scale-110 group-hover:bg-brand-purple-900 group-hover:text-white transition-all duration-300">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <span className="text-[11px] font-bold text-brand-rose-600 bg-brand-rose-50 border border-brand-rose-100 px-2.5 py-1 rounded-full">
+                  <span className="text-[11px] font-outfit font-extrabold text-brand-rose-600 bg-brand-rose-50 border border-brand-rose-200 px-2.5 py-1 rounded-full">
                     {pt.badge}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-2 mb-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <h3 className="font-serif font-bold text-base text-brand-purple-950 group-hover:text-brand-purple-800 transition-colors">
+                  <h3 className="font-outfit font-extrabold text-base text-brand-purple-950 group-hover:text-brand-purple-800 transition-colors">
                     {pt.title}
                   </h3>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p className="font-outfit text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                   {pt.desc}
                 </p>
               </div>
