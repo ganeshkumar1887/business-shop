@@ -1,4 +1,4 @@
-import { IMAGES } from './images';
+import { IMAGES, birthdayHamperImg, weddingHamperImg, coupleHamperImg } from './images';
 
 export const CATEGORIES = [
   {
@@ -9,7 +9,7 @@ export const CATEGORIES = [
     slug: "birthday-gifts",
     description: "Personalized birthday photo frames, LED lamps, mugs, custom hampers, and celebration decor.",
     itemCount: "35+ Items",
-    image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=800&auto=format&fit=crop",
+    image: birthdayHamperImg,
     featured: true,
     accentColor: "from-pink-500 to-rose-600"
   },
@@ -21,7 +21,7 @@ export const CATEGORIES = [
     slug: "couple-romantic-gifts",
     description: "Heart LED lamps, couple mug sets, romantic photo frames, matching keychains & love hampers.",
     itemCount: "40+ Items",
-    image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800&auto=format&fit=crop",
+    image: coupleHamperImg,
     featured: true,
     accentColor: "from-rose-600 to-red-700"
   },
@@ -33,7 +33,7 @@ export const CATEGORIES = [
     slug: "wedding-gifts",
     description: "Royal bride & groom showpieces, couple idols, shagun envelopes, and premium wedding hampers.",
     itemCount: "45+ Items",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop",
+    image: weddingHamperImg,
     featured: true,
     accentColor: "from-amber-600 to-orange-700"
   },

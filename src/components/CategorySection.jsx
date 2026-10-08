@@ -30,14 +30,14 @@ export default function CategorySection() {
               className="group bg-white rounded-3xl overflow-hidden border border-brand-cream-300 hover:border-brand-purple-300 shadow-sm hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between"
             >
               {/* Category Image with Zoom Effect & Emoji Badge */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-slate-900 flex items-center justify-center p-2">
+              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-b from-brand-cream-100 via-white to-brand-cream-100 border-b border-brand-cream-200 flex items-center justify-center p-3">
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out"
+                  className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500 ease-out drop-shadow-sm"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
                 
                 {/* Emoji Float Badge */}
                 <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-800 shadow-sm flex items-center gap-1.5 border border-brand-cream-200">

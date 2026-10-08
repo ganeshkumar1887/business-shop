@@ -3,25 +3,24 @@ import { Link } from 'react-router-dom';
 import { Sparkles, Gift, ArrowRight, Star, Heart, Flame, ShieldCheck, Truck, Palette, Clock } from 'lucide-react';
 import { CATEGORIES } from '../data/categories';
 import { getFeaturedProducts, getProductsByCategory } from '../data/products';
+import { birthdayHamperImg, weddingHamperImg, coupleHamperImg, heroImg2 } from '../data/images';
 import ProductCard from './ProductCard';
 
 export default function GiftShopSection({ onQuickView, onOrderNow }) {
   const [activeTab, setActiveTab] = useState('all');
 
-  // Key 9 highlighted visual categories with dedicated images, theme gradients, and full names
+  // Key 9 highlighted visual categories with crystal clear real photos and high-contrast styling
   const highlightCategories = [
     {
       id: 'birthday-gifts',
       name: 'Birthday Gifts',
-      hindiName: 'बर्थडे स्पेशल',
+      hindiName: 'बर्थडे स्पेशल गिफ्ट्स',
       emoji: '🎂',
       slug: 'birthday-gifts',
       count: '35+ Gifts',
-      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-pink-600/90 via-rose-700/80 to-purple-900/90',
-      borderGlow: 'hover:border-pink-400 group-hover:shadow-pink-500/20',
+      image: birthdayHamperImg,
       badge: 'Popular',
-      badgeColor: 'bg-pink-500 text-white'
+      badgeColor: 'bg-rose-500 text-white'
     },
     {
       id: 'wedding-gifts',
@@ -30,50 +29,42 @@ export default function GiftShopSection({ onQuickView, onOrderNow }) {
       emoji: '💍',
       slug: 'wedding-gifts',
       count: '45+ Items',
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-amber-700/90 via-orange-800/80 to-purple-950/90',
-      borderGlow: 'hover:border-amber-400 group-hover:shadow-amber-500/20',
+      image: weddingHamperImg,
       badge: 'Royal',
-      badgeColor: 'bg-amber-500 text-slate-950'
+      badgeColor: 'bg-amber-400 text-slate-950'
     },
     {
       id: 'couple-romantic-gifts',
       name: 'Couple & Romantic',
-      hindiName: 'रोमांटिक गिफ्ट्स',
+      hindiName: 'कपल व रोमांटिक गिफ्ट्स',
       emoji: '❤️',
       slug: 'couple-romantic-gifts',
       count: '40+ Items',
-      image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-rose-700/90 via-red-800/80 to-pink-950/90',
-      borderGlow: 'hover:border-rose-400 group-hover:shadow-rose-500/20',
+      image: coupleHamperImg,
       badge: 'Trending',
-      badgeColor: 'bg-rose-500 text-white'
+      badgeColor: 'bg-red-500 text-white'
     },
     {
       id: 'baby-gifts',
       name: 'Baby & Newborn',
-      hindiName: 'न्यू बॉर्न बेबी',
+      hindiName: 'न्यू बॉर्न बेबी गिफ्ट्स',
       emoji: '👶',
       slug: 'baby-gifts',
       count: '25+ Items',
-      image: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-sky-600/90 via-cyan-700/80 to-blue-900/90',
-      borderGlow: 'hover:border-sky-400 group-hover:shadow-sky-500/20',
+      image: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=800&auto=format&fit=crop',
       badge: 'Cute',
       badgeColor: 'bg-sky-500 text-white'
     },
     {
       id: 'soft-toys',
       name: 'Soft Toys & Teddies',
-      hindiName: 'टेडी व प्लश टॉय',
+      hindiName: 'सॉफ्ट टॉयज व टेडी',
       emoji: '🧸',
       slug: 'soft-toys',
       count: '30+ Items',
-      image: 'https://images.unsplash.com/photo-1559454403-b8fb88521f11?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-amber-600/90 via-yellow-700/80 to-orange-950/90',
-      borderGlow: 'hover:border-yellow-400 group-hover:shadow-yellow-500/20',
+      image: 'https://images.unsplash.com/photo-1559454403-b8fb88521f11?q=80&w=800&auto=format&fit=crop',
       badge: 'Super Soft',
-      badgeColor: 'bg-amber-400 text-slate-900'
+      badgeColor: 'bg-amber-400 text-slate-950'
     },
     {
       id: 'personalized-gifts',
@@ -82,35 +73,29 @@ export default function GiftShopSection({ onQuickView, onOrderNow }) {
       emoji: '✨',
       slug: 'personalized-gifts',
       count: '60+ Items',
-      image: 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-purple-700/90 via-violet-800/80 to-pink-900/90',
-      borderGlow: 'hover:border-purple-400 group-hover:shadow-purple-500/20',
+      image: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=800&auto=format&fit=crop',
       badge: 'Custom Made',
-      badgeColor: 'bg-brand-purple-600 text-white'
+      badgeColor: 'bg-purple-600 text-white'
     },
     {
       id: 'religious-gifts',
       name: 'Religious & Idols',
-      hindiName: 'राधा कृष्ण व गणेश जी',
+      hindiName: 'धार्मिक व पूजा गिफ्ट्स',
       emoji: '🕉️',
       slug: 'religious-gifts',
       count: '35+ Items',
-      image: 'https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-amber-700/90 via-yellow-800/80 to-orange-950/90',
-      borderGlow: 'hover:border-amber-400 group-hover:shadow-amber-500/20',
+      image: 'https://images.unsplash.com/photo-1608889175123-8ee362201f81?q=80&w=800&auto=format&fit=crop',
       badge: 'Devotional',
-      badgeColor: 'bg-amber-600 text-white'
+      badgeColor: 'bg-amber-500 text-slate-950'
     },
     {
       id: 'gift-hampers',
       name: 'Luxury Hampers',
-      hindiName: 'प्रीमियम गिफ्ट बास्केट',
+      hindiName: 'प्रीमियम गिफ्ट हैंपर्स',
       emoji: '🎁',
       slug: 'gift-hampers',
       count: '30+ Hampers',
-      image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-fuchsia-700/90 via-purple-900/80 to-slate-950/90',
-      borderGlow: 'hover:border-fuchsia-400 group-hover:shadow-fuchsia-500/20',
+      image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop',
       badge: 'Gift Ready',
       badgeColor: 'bg-fuchsia-600 text-white'
     },
@@ -121,9 +106,7 @@ export default function GiftShopSection({ onQuickView, onOrderNow }) {
       emoji: '👑',
       slug: 'thermocol-event-decoration',
       count: '50+ Designs',
-      image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop',
-      gradient: 'from-brand-purple-950/95 via-purple-900/90 to-amber-900/90',
-      borderGlow: 'hover:border-brand-gold-400 group-hover:shadow-amber-500/30',
+      image: heroImg2,
       badge: 'Our Specialty',
       badgeColor: 'bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950'
     },
@@ -188,7 +171,7 @@ export default function GiftShopSection({ onQuickView, onOrderNow }) {
         </div>
 
         {/* ============================================================ */}
-        {/* 🎨 9 HIGH-IMPACT CATEGORY SHOWCASE CARDS */}
+        {/* 🎨 9 HIGH-IMPACT CATEGORY SHOWCASE CARDS (CRYSTAL CLEAR) */}
         {/* ============================================================ */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
@@ -201,54 +184,61 @@ export default function GiftShopSection({ onQuickView, onOrderNow }) {
             </span>
           </div>
 
-          {/* Responsive Category Grid with Real Photos & Full Names */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6">
+          {/* Responsive Category Grid with 100% Clear Images & High-Contrast Typography */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {highlightCategories.map((cat) => (
               <Link
                 key={cat.id}
                 to={`/products?category=${cat.slug}`}
-                className={`group relative h-48 sm:h-56 rounded-3xl overflow-hidden border-2 border-brand-cream-300 ${cat.borderGlow} shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-5 hover:-translate-y-1.5`}
+                className="group relative h-60 sm:h-72 rounded-3xl overflow-hidden border-2 border-brand-cream-300 hover:border-amber-400 bg-brand-cream-100 shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col justify-between p-4 sm:p-5 hover:-translate-y-1.5 cursor-pointer"
               >
-                {/* Background Image with Zoom Effect */}
+                {/* 100% Crisp & Clear Product Image (No obscuring color tint) */}
                 <img
                   src={cat.image}
                   alt={cat.name}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-115 transition-transform duration-700 ease-out"
+                  className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
 
-                {/* Rich Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-t ${cat.gradient} opacity-85 group-hover:opacity-95 transition-opacity duration-300`} />
+                {/* Subtle top shade for badge contrast */}
+                <div className="absolute top-0 inset-x-0 h-20 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" />
 
-                {/* Subtle Inner Border Ring */}
-                <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/20 group-hover:ring-amber-300/40 transition-colors pointer-events-none" />
+                {/* Rich bottom scrim to keep the photo clear above while making text 100% legible */}
+                <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent pointer-events-none" />
 
-                {/* Card Top: Emoji & Badge */}
+                {/* Inner Border Ring */}
+                <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/20 group-hover:ring-amber-400/60 transition-colors pointer-events-none" />
+
+                {/* Card Top: Floating Emoji Pill & High-Contrast Category Badge */}
                 <div className="relative z-10 flex items-center justify-between">
-                  <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <div className="w-11 h-11 rounded-2xl bg-black/40 backdrop-blur-md border border-white/25 flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform">
                     {cat.emoji}
                   </div>
-                  <span className={`text-[11px] font-outfit font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm ${cat.badgeColor}`}>
+                  <span className={`text-xs font-outfit font-black px-3 py-1 rounded-full uppercase tracking-wider shadow-md ${cat.badgeColor}`}>
                     {cat.badge}
                   </span>
                 </div>
 
-                {/* Card Bottom: Titles & CTA */}
-                <div className="relative z-10 space-y-1">
-                  <span className="text-[11px] font-outfit font-semibold text-amber-200 tracking-wide block">
-                    {cat.hindiName}
-                  </span>
-                  <div className="flex items-end justify-between gap-2">
-                    <div>
-                      <h4 className="font-outfit font-extrabold text-lg sm:text-xl text-white tracking-tight leading-snug group-hover:text-amber-200 transition-colors">
+                {/* Card Bottom: Crystal Clear Frosted Text Pill */}
+                <div className="relative z-10 bg-slate-950/75 backdrop-blur-md border border-white/15 rounded-2xl p-3 sm:p-3.5 shadow-xl group-hover:bg-slate-950/90 group-hover:border-amber-400/50 transition-all">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="min-w-0 flex-1">
+                      {/* Hindi Name */}
+                      <span className="text-[11px] sm:text-xs font-outfit font-bold text-amber-300 tracking-wide block truncate">
+                        {cat.hindiName}
+                      </span>
+                      {/* English Name */}
+                      <h4 className="font-outfit font-black text-base sm:text-lg text-white tracking-tight leading-snug group-hover:text-amber-200 transition-colors truncate">
                         {cat.name}
                       </h4>
-                      <p className="text-xs font-outfit font-medium text-white/80">
+                      {/* Item Count */}
+                      <span className="text-[11px] font-outfit font-semibold text-slate-300">
                         {cat.count}
-                      </p>
+                      </span>
                     </div>
 
-                    <div className="w-8 h-8 rounded-full bg-white/20 group-hover:bg-amber-400 group-hover:text-slate-950 text-white flex items-center justify-center backdrop-blur-md transition-all duration-300 shrink-0">
+                    {/* Arrow Button */}
+                    <div className="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 group-hover:bg-amber-300 flex items-center justify-center font-bold shadow-md transition-all duration-300 shrink-0 group-hover:scale-105">
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                     </div>
                   </div>

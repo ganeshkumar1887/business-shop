@@ -53,12 +53,12 @@ export default function ProductCard({ product, onQuickView, onOrderNow }) {
     <div className="group bg-white rounded-3xl overflow-hidden border border-brand-cream-300 hover:border-brand-purple-300 shadow-sm hover:shadow-luxury transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
       
       {/* Top Image Box */}
-      <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden bg-gradient-to-b from-slate-900 to-brand-purple-950 flex items-center justify-center p-2.5">
+      <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden bg-gradient-to-b from-brand-cream-100/80 via-white to-brand-cream-100/60 border-b border-brand-cream-200 flex items-center justify-center p-3">
         <Link to={`/products/${product.id}`} className="w-full h-full flex items-center justify-center">
           <img
             src={product.image}
             alt={product.name}
-            className="max-h-full max-w-full w-auto h-auto object-contain rounded-xl drop-shadow-md group-hover:scale-105 transition-transform duration-500 ease-out"
+            className="max-h-full max-w-full w-auto h-auto object-contain rounded-xl drop-shadow-sm group-hover:scale-105 transition-transform duration-500 ease-out"
             loading="lazy"
           />
         </Link>

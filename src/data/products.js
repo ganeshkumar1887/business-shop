@@ -1,4 +1,4 @@
-import { IMAGES } from './images';
+import { IMAGES, birthdayHamperImg, weddingHamperImg, coupleHamperImg } from './images';
 
 export const PRODUCTS = [
   // ==========================================
@@ -98,7 +98,7 @@ export const PRODUCTS = [
     price: 1299,
     originalPrice: 1899,
     discount: "32% OFF",
-    image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop",
+    image: birthdayHamperImg,
     rating: 5.0,
     reviewsCount: 215,
     customizable: true,
@@ -347,7 +347,7 @@ export const PRODUCTS = [
     price: 1499,
     originalPrice: 2199,
     discount: "32% OFF",
-    image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop",
+    image: coupleHamperImg,
     rating: 4.9,
     reviewsCount: 175,
     customizable: true,
@@ -478,7 +478,7 @@ export const PRODUCTS = [
     price: 2199,
     originalPrice: 3200,
     discount: "31% OFF",
-    image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop",
+    image: weddingHamperImg,
     rating: 5.0,
     reviewsCount: 180,
     customizable: true,
