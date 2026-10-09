@@ -14,10 +14,12 @@ import {
   Crown,
   Moon,
   Cake,
-  Flame
+  Flame,
+  Gift
 } from 'lucide-react';
 import { SHOP_CONFIG } from '../data/config';
 import { logoImg } from '../data/images';
+import { CATEGORIES } from '../data/categories';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { getGeneralInquiryUrl } from '../utils/whatsapp';
@@ -26,8 +28,11 @@ export default function Navbar({ onOpenSearch }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [marriageDropdownOpen, setMarriageDropdownOpen] = useState(false);
+  const [giftDropdownOpen, setGiftDropdownOpen] = useState(false);
   const [mobileMarriageOpen, setMobileMarriageOpen] = useState(false);
+  const [mobileGiftOpen, setMobileGiftOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const giftDropdownRef = useRef(null);
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,13 +51,17 @@ export default function Navbar({ onOpenSearch }) {
   useEffect(() => {
     setMobileMenuOpen(false);
     setMarriageDropdownOpen(false);
+    setGiftDropdownOpen(false);
   }, [location.pathname, location.search]);
 
-  // Handle click outside dropdown
+  // Handle click outside dropdowns
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setMarriageDropdownOpen(false);
+      }
+      if (giftDropdownRef.current && !giftDropdownRef.current.contains(event.target)) {
+        setGiftDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -159,16 +168,90 @@ export default function Navbar({ onOpenSearch }) {
                 Home
               </Link>
 
-              <Link
-                to="/products?category=gift-items"
-                className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
-                  location.pathname === '/products'
-                    ? 'text-brand-purple-900 bg-brand-purple-100/70 font-semibold shadow-sm' 
-                    : 'text-slate-700 hover:text-brand-purple-800 hover:bg-brand-cream-100'
-                }`}
+              {/* Gift Items with Interactive Dropdown (All 20 Categories) */}
+              <div 
+                className="relative" 
+                ref={giftDropdownRef}
+                onMouseEnter={() => setGiftDropdownOpen(true)}
+                onMouseLeave={() => setGiftDropdownOpen(false)}
               >
-                Gift Items
-              </Link>
+                <button
+                  onClick={() => setGiftDropdownOpen(!giftDropdownOpen)}
+                  className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
+                    location.pathname === '/products'
+                      ? 'text-brand-purple-900 bg-brand-purple-100/70 font-semibold shadow-sm' 
+                      : 'text-slate-700 hover:text-brand-purple-800 hover:bg-brand-cream-100'
+                  }`}
+                >
+                  <Gift className="w-4 h-4 text-brand-rose-600" />
+                  <span>Gift Items</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${giftDropdownOpen ? 'rotate-180 text-brand-purple-900' : 'text-slate-400'}`} />
+                </button>
+
+                {/* Dropdown Mega Menu */}
+                {giftDropdownOpen && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/3 w-[680px] max-w-[92vw] bg-white rounded-3xl shadow-2xl border border-brand-cream-300 p-4 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-brand-cream-200 px-1">
+                      <div className="flex items-center gap-2">
+                        <span className="p-1.5 bg-brand-purple-100 text-brand-purple-900 rounded-lg text-xs font-bold">🎁</span>
+                        <div>
+                          <h4 className="font-serif font-bold text-sm text-brand-purple-950">Browse 20 Gift Categories</h4>
+                          <p className="text-[11px] text-slate-500">Choose any category to explore products</p>
+                        </div>
+                      </div>
+                      <Link
+                        to="/products"
+                        onClick={() => setGiftDropdownOpen(false)}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-gradient-to-r from-brand-purple-900 to-brand-rose-600 hover:from-brand-purple-950 hover:to-brand-rose-700 px-3.5 py-1.5 rounded-xl shadow-xs transition-all"
+                      >
+                        <Sparkles className="w-3.5 h-3.5 text-brand-gold-300" />
+                        <span>All Products ({CATEGORIES.length} Categories) →</span>
+                      </Link>
+                    </div>
+
+                    {/* 20 Categories Grid (3 Columns) */}
+                    <div className="grid grid-cols-3 gap-1.5 max-h-[360px] overflow-y-auto pr-1">
+                      {CATEGORIES.map((cat) => (
+                        <Link
+                          key={cat.id}
+                          to={`/products?category=${cat.slug}`}
+                          onClick={() => setGiftDropdownOpen(false)}
+                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-brand-cream-100 border border-transparent hover:border-brand-cream-300 transition-all group text-left"
+                        >
+                          <span className="text-lg p-1 bg-brand-cream-50 rounded-lg group-hover:scale-110 group-hover:bg-white transition-transform shrink-0 shadow-2xs">
+                            {cat.emoji}
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <p className="text-xs font-bold text-brand-purple-950 group-hover:text-brand-purple-800 truncate">
+                              {cat.name}
+                            </p>
+                            <span className="text-[10px] text-brand-rose-600 font-semibold block truncate">
+                              {cat.itemCount}
+                            </span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Dropdown Footer */}
+                    <div className="pt-2.5 mt-2.5 border-t border-brand-cream-200 flex items-center justify-between px-1 text-xs">
+                      <div className="flex items-center gap-1.5 text-slate-600 text-[11px]">
+                        <span className="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+                        <span>100% Customized with Name &amp; Photo Printing</span>
+                      </div>
+                      <a
+                        href={getGeneralInquiryUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-bold text-emerald-700 hover:text-emerald-800 inline-flex items-center gap-1 text-[11px]"
+                      >
+                        <MessageCircle className="w-3.5 h-3.5" />
+                        <span>Direct WhatsApp Order</span>
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Marriage Designs with Interactive Dropdown (Hindu, Islamic, Birthday) */}
               <div 
@@ -346,12 +429,55 @@ export default function Navbar({ onOpenSearch }) {
                 Home
               </Link>
 
-              <Link
-                to="/products?category=gift-items"
-                className="block px-4 py-2.5 rounded-xl text-base font-medium text-slate-700 hover:bg-brand-cream-100"
-              >
-                Gift Items
-              </Link>
+              {/* Mobile Gift Categories Accordion */}
+              <div className="border border-brand-cream-300 rounded-2xl overflow-hidden bg-brand-cream-50/50 my-1.5">
+                <button
+                  onClick={() => setMobileGiftOpen(!mobileGiftOpen)}
+                  className="w-full flex items-center justify-between px-4 py-3 text-base font-bold text-brand-purple-950"
+                >
+                  <div className="flex items-center gap-2">
+                    <Gift className="w-4 h-4 text-brand-rose-600" />
+                    <span>Gift Categories ({CATEGORIES.length})</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${mobileGiftOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {mobileGiftOpen && (
+                  <div className="px-3 pb-3 space-y-1.5 border-t border-brand-cream-200 pt-2 max-h-72 overflow-y-auto">
+                    <Link
+                      to="/products"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center justify-between p-2.5 rounded-xl text-xs font-bold text-brand-purple-950 bg-brand-purple-100 hover:bg-brand-purple-200 border border-brand-purple-200"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span>✨</span>
+                        <span>View All Products &amp; Categories</span>
+                      </div>
+                      <span className="text-brand-purple-800 font-bold">→</span>
+                    </Link>
+
+                    {CATEGORIES.map((cat) => (
+                      <Link
+                        key={cat.id}
+                        to={`/products?category=${cat.slug}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center justify-between p-2 rounded-xl text-xs font-medium text-slate-800 hover:bg-brand-cream-100 border border-brand-cream-200/60 bg-white"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span className="text-base shrink-0">{cat.emoji}</span>
+                          <div className="min-w-0 truncate">
+                            <p className="font-bold text-brand-purple-950 truncate">{cat.name}</p>
+                            <p className="text-[10px] text-slate-500 font-normal truncate">{cat.hindiName}</p>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-bold text-brand-rose-600 bg-brand-rose-50 px-2 py-0.5 rounded-full shrink-0">
+                          {cat.itemCount}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* Mobile Marriage Designs Accordion */}
               <div className="border border-brand-cream-300 rounded-2xl overflow-hidden bg-brand-cream-50/50 my-1.5">

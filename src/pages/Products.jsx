@@ -167,53 +167,36 @@ export default function Products({ onQuickView, onOrderNow }) {
           </div>
         </div>
 
-        {/* 20 Categories Horizontal Scroller Carousel */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <h2 className="font-serif font-bold text-lg sm:text-xl text-brand-purple-950 flex items-center gap-2">
-              <span>All 20 Gift Categories</span>
-              <span className="text-xs font-normal text-slate-500">({CATEGORIES.length} Categories)</span>
-            </h2>
-            {activeCategory !== 'all' && (
-              <button
-                onClick={() => handleCategoryChange('all')}
-                className="text-xs font-bold text-brand-rose-600 hover:text-brand-rose-700 underline"
-              >
-                Clear Category
-              </button>
-            )}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 pt-1">
+        {/* Active Category Banner (Shown when a category is filtered) */}
+        {activeCatObj ? (
+          <div className="flex flex-wrap items-center justify-between gap-4 bg-gradient-to-r from-brand-purple-950 via-brand-purple-900 to-brand-rose-900 text-white rounded-2xl p-4 sm:p-5 shadow-lg border border-brand-gold-400/30 animate-in fade-in duration-200">
+            <div className="flex items-center gap-3.5">
+              <span className="text-3xl p-2.5 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xs shrink-0">
+                {activeCatObj.emoji}
+              </span>
+              <div>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h2 className="font-serif font-bold text-lg sm:text-xl text-white">
+                    {activeCatObj.name}
+                  </h2>
+                  <span className="text-xs bg-brand-gold-500/20 text-brand-gold-300 border border-brand-gold-400/40 font-bold px-2.5 py-0.5 rounded-full">
+                    {activeCatObj.itemCount}
+                  </span>
+                </div>
+                <p className="text-xs text-brand-cream-200 mt-0.5 font-medium line-clamp-1">
+                  {activeCatObj.hindiName} — {activeCatObj.description}
+                </p>
+              </div>
+            </div>
             <button
               onClick={() => handleCategoryChange('all')}
-              className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 border flex items-center gap-1.5 shadow-2xs ${
-                activeCategory === 'all'
-                  ? 'bg-brand-purple-950 text-brand-gold-300 border-brand-gold-400 shadow-md scale-105'
-                  : 'bg-white text-slate-700 hover:bg-brand-cream-100 border-brand-cream-300'
-              }`}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-white/15 hover:bg-white/25 text-white hover:text-brand-gold-200 text-xs font-bold rounded-xl border border-white/20 transition-all shadow-xs"
             >
-              <span>✨</span>
-              <span>All Products ({PRODUCTS.length})</span>
+              <X className="w-4 h-4" />
+              <span>Show All Products</span>
             </button>
-
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => handleCategoryChange(cat.slug)}
-                className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 border flex items-center gap-1.5 shadow-2xs ${
-                  activeCategory === cat.slug
-                    ? 'bg-brand-purple-950 text-brand-gold-300 border-brand-gold-400 shadow-md scale-105'
-                    : 'bg-white text-slate-700 hover:bg-brand-cream-100 border-brand-cream-300'
-                }`}
-              >
-                <span>{cat.emoji}</span>
-                <span>{cat.name}</span>
-                <span className="text-[10px] opacity-70 bg-black/10 px-1.5 py-0.5 rounded-full">{cat.itemCount}</span>
-              </button>
-            ))}
           </div>
-        </div>
+        ) : null}
 
         {/* Collection Filter Quick Tabs */}
         <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-brand-cream-200">
@@ -246,13 +229,13 @@ export default function Products({ onQuickView, onOrderNow }) {
           <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
             
             {/* Search Input */}
-            <div className="sm:col-span-5 relative">
+            <div className="sm:col-span-4 relative">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search teddy, mug, photo frame, LED lamp, idol..."
+                placeholder="Search teddy, photo frame, lamp..."
                 className="w-full pl-10 pr-8 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple-600 bg-brand-cream-50/40"
               />
               {searchTerm && (
@@ -265,24 +248,40 @@ export default function Products({ onQuickView, onOrderNow }) {
               )}
             </div>
 
-            {/* Price Filter Dropdown */}
+            {/* Category Dropdown Filter */}
             <div className="sm:col-span-3">
+              <select
+                value={activeCategory}
+                onChange={(e) => handleCategoryChange(e.target.value)}
+                className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple-600 bg-white font-medium text-slate-700"
+              >
+                <option value="all">📁 All 20 Categories</option>
+                {CATEGORIES.map(c => (
+                  <option key={c.id} value={c.slug}>
+                    {c.emoji} {c.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Price Filter Dropdown */}
+            <div className="sm:col-span-2">
               <select
                 value={priceFilter}
                 onChange={(e) => setPriceFilter(e.target.value)}
                 className="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-brand-purple-600 bg-white font-medium text-slate-700"
               >
-                <option value="all">Price: All Ranges</option>
-                <option value="under300">Under ₹300 (Budget)</option>
+                <option value="all">Price: All</option>
+                <option value="under300">Under ₹300</option>
                 <option value="300-700">₹300 - ₹700</option>
                 <option value="700-1500">₹700 - ₹1,500</option>
-                <option value="above1500">₹1,500+ (Premium)</option>
-                <option value="custom">Custom Price (Quote)</option>
+                <option value="above1500">₹1,500+</option>
+                <option value="custom">Custom Price</option>
               </select>
             </div>
 
             {/* Sorting Dropdown */}
-            <div className="sm:col-span-4 flex items-center gap-2">
+            <div className="sm:col-span-3">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}

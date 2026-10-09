@@ -19,7 +19,16 @@ function syncUploadedImages() {
         'media_1791523760842.jpg': 'cute-bunny.jpg',
         'media_1791523961122.jpg': 'cartoon-soft-toy.jpg',
         'media_1791523978407.jpg': 'heart-teddy.jpg',
-        'media_1791523945819.png': 'mini-soft-toy.png'
+        'media_1791523945819.png': 'mini-soft-toy.png',
+        'media_1791525078918.jpg': 'bday-gift-hamper.jpg',
+        'media_1791525159889.png': 'bday-led-lamp.png',
+        'media_1791525265774.jpg': 'bday-personalized-gift.jpg',
+        'media_1791525609270.png': 'bday-mug.png',
+        'media_1791525644386.png': 'bday-name-plate.png',
+        'media_1791525814848.jpg': 'bday-decoration-set.jpg',
+        'media_1791527547690.jpg': 'couple-mug-set.jpg',
+        'media_1791528095040.jpg': 'couple-photo-frame.jpg',
+        'media_1791528161843.png': 'heart-led-lamp.png'
       };
       for (const [srcFile, destFile] of Object.entries(mapping)) {
         const srcPath = path.join(srcDir, srcFile);
