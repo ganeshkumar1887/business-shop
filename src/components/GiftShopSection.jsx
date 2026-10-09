@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Gift, ArrowRight, Star, Heart, Flame, ShieldCheck, Truck, Palette, Clock } from 'lucide-react';
-import { CATEGORIES } from '../data/categories';
-import { getFeaturedProducts, getProductsByCategory } from '../data/products';
+import { Sparkles, Gift, ArrowRight, ShieldCheck, Truck, Palette } from 'lucide-react';
 import { birthdayHamperImg, weddingHamperImg, coupleHamperImg, heroImg2 } from '../data/images';
-import ProductCard from './ProductCard';
 
-export default function GiftShopSection({ onQuickView, onOrderNow }) {
-  const [activeTab, setActiveTab] = useState('all');
-
+export default function GiftShopSection() {
   // Key 9 highlighted visual categories with crystal clear real photos and high-contrast styling
   const highlightCategories = [
     {
@@ -111,24 +106,6 @@ export default function GiftShopSection({ onQuickView, onOrderNow }) {
       badgeColor: 'bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950'
     },
   ];
-
-  // Quick category tabs for instant product filtering
-  const quickTabs = [
-    { id: 'all', label: '🔥 All Bestsellers', slug: null },
-    { id: 'birthday-gifts', label: '🎂 Birthday', slug: 'birthday-gifts' },
-    { id: 'wedding-gifts', label: '💍 Wedding', slug: 'wedding-gifts' },
-    { id: 'couple-romantic-gifts', label: '❤️ Couple', slug: 'couple-romantic-gifts' },
-    { id: 'personalized-gifts', label: '✨ Personalized', slug: 'personalized-gifts' },
-    { id: 'soft-toys', label: '🧸 Soft Toys', slug: 'soft-toys' },
-    { id: 'gift-hampers', label: '🎁 Hampers', slug: 'gift-hampers' },
-    { id: 'religious-gifts', label: '🕉️ Religious', slug: 'religious-gifts' },
-    { id: 'thermocol-event-decoration', label: '👑 Thermocol', slug: 'thermocol-event-decoration' },
-  ];
-
-  // Get products based on active tab
-  const displayedProducts = activeTab === 'all'
-    ? getFeaturedProducts(8)
-    : getProductsByCategory(activeTab).slice(0, 8);
 
   return (
     <section className="py-20 lg:py-28 bg-gradient-to-b from-brand-cream-50 via-white to-brand-cream-100 relative overflow-hidden border-b border-brand-cream-300">
@@ -247,69 +224,6 @@ export default function GiftShopSection({ onQuickView, onOrderNow }) {
               </Link>
             ))}
           </div>
-        </div>
-
-        {/* ============================================================ */}
-        {/* 🔥 TRENDING PRODUCTS WITH INTERACTIVE TABS */}
-        {/* ============================================================ */}
-        <div className="space-y-8 pt-6">
-          
-          {/* Header & Category Filter Tabs */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-brand-cream-300 pb-6">
-            <div>
-              <div className="inline-flex items-center gap-2 text-xs font-outfit font-black uppercase tracking-wider text-brand-rose-600 mb-1">
-                <Flame className="w-4 h-4 text-brand-rose-600 animate-pulse" />
-                <span>Customer Favorites</span>
-              </div>
-              <h3 className="font-cinzel font-black text-2xl sm:text-3xl text-brand-purple-950">
-                Top Trending Gift Items
-              </h3>
-              <p className="font-outfit text-sm text-slate-500 mt-1">
-                Handpicked bestselling gifts loved by customers for all joyful moments.
-              </p>
-            </div>
-
-            <Link
-              to="/products"
-              className="inline-flex items-center gap-2 font-outfit font-extrabold text-sm text-brand-purple-900 hover:text-brand-rose-600 bg-white hover:bg-brand-purple-50 px-4 py-2.5 rounded-xl border border-brand-purple-200 shadow-sm transition-all group shrink-0"
-            >
-              <span>Explore All 20+ Categories</span>
-              <ArrowRight className="w-4 h-4 text-brand-purple-700 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          {/* Quick Filter Pill Buttons */}
-          <div className="flex flex-wrap items-center gap-2 pb-2">
-            {quickTabs.map((tab) => {
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-outfit font-bold transition-all duration-200 cursor-pointer ${
-                    isActive
-                      ? 'bg-brand-purple-950 text-white shadow-md shadow-brand-purple-950/20 ring-2 ring-brand-purple-400'
-                      : 'bg-white text-slate-700 hover:bg-brand-cream-200 border border-brand-cream-300 hover:border-brand-purple-300'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {displayedProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onQuickView={onQuickView}
-                onOrderNow={onOrderNow}
-              />
-            ))}
-          </div>
-
         </div>
 
         {/* ============================================================ */}
