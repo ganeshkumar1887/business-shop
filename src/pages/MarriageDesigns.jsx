@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { 
   Heart, 
   Crown, 
@@ -8,6 +8,8 @@ import {
   Moon, 
   Cake, 
   ArrowRight,
+  ArrowLeft,
+  Home,
   CheckCircle2
 } from 'lucide-react';
 import { PRODUCTS } from '../data/products';
@@ -51,7 +53,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
     { 
       id: 'hindu', 
       label: 'हिन्दू विवाह', 
-      englishLabel: 'Hindu Design',
+      englishLabel: 'Hindu Vivah',
       icon: '🕉️', 
       sub: 'शुभ विवाह व मंडप बोर्ड',
       activeClass: 'from-amber-600 to-amber-800 text-white shadow-luxury ring-2 ring-amber-300'
@@ -59,10 +61,26 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
     { 
       id: 'islamic', 
       label: 'इस्लामिक निकाह', 
-      englishLabel: 'Islamic Design',
+      englishLabel: 'Islamic Nikah',
       icon: '🌙', 
       sub: 'निकाह मुबारक व वलीमा',
       activeClass: 'from-emerald-700 to-emerald-900 text-white shadow-luxury ring-2 ring-emerald-300'
+    },
+    { 
+      id: 'haldi', 
+      label: 'हल्दी सेरेमनी', 
+      englishLabel: 'Haldi Ceremony',
+      icon: '💛', 
+      sub: 'येलो वेलकम व प्रॉप्स',
+      activeClass: 'from-amber-500 to-yellow-600 text-white shadow-luxury ring-2 ring-yellow-300'
+    },
+    { 
+      id: 'mehndi', 
+      label: 'मेहंदी सेरेमनी', 
+      englishLabel: 'Mehndi Ceremony',
+      icon: '💚', 
+      sub: 'मेहंदी व संगीत स्टेज बोर्ड्स',
+      activeClass: 'from-teal-600 to-emerald-800 text-white shadow-luxury ring-2 ring-teal-300'
     },
     { 
       id: 'birthday', 
@@ -75,10 +93,24 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
   ];
 
   const filteredProducts = PRODUCTS.filter((p) => {
-    if (activeTab === 'all') return true;
-    if (activeTab === 'hindu') return p.designType === 'hindu' || p.categoryId === 'hindu-design';
-    if (activeTab === 'islamic') return p.designType === 'islamic' || p.categoryId === 'islamic-design';
-    if (activeTab === 'birthday') return p.designType === 'birthday' || p.categoryId === 'birthday-design';
+    if (activeTab === 'all') {
+      return p.designType || p.categoryId === 'thermocol-event-decoration' || p.categoryId === 'customized-event-orders' || p.tags?.some(t => ['wedding', 'marriage', 'shubh vivah', 'nikah', 'haldi', 'mehndi', 'birthday', 'thermocol', 'board', 'stage'].some(k => t.toLowerCase().includes(k)));
+    }
+    if (activeTab === 'hindu') {
+      return p.designType === 'hindu' || p.categoryId === 'hindu-design' || p.tags?.some(t => ['hindu', 'shubh', 'vivah', 'mandap', 'wedding', 'peacock', 'kalash', 'radha'].some(k => t.toLowerCase().includes(k)));
+    }
+    if (activeTab === 'islamic') {
+      return p.designType === 'islamic' || p.categoryId === 'islamic-design' || p.tags?.some(t => ['islamic', 'nikah', 'walima', 'muslim', 'crescent', 'urdu'].some(k => t.toLowerCase().includes(k)));
+    }
+    if (activeTab === 'haldi') {
+      return p.designType === 'haldi' || p.categoryId === 'haldi-design' || p.tags?.some(t => ['haldi', 'yellow', 'kumkum', 'props', 'platter', 'turmeric'].some(k => t.toLowerCase().includes(k)));
+    }
+    if (activeTab === 'mehndi') {
+      return p.designType === 'mehndi' || p.categoryId === 'mehndi-design' || p.tags?.some(t => ['mehndi', 'mehandi', 'sangeet', 'henna', 'bridal', 'dholak'].some(k => t.toLowerCase().includes(k)));
+    }
+    if (activeTab === 'birthday') {
+      return p.designType === 'birthday' || p.categoryId === 'birthday-design' || p.categoryId === 'birthday-gifts' || p.tags?.some(t => ['birthday', 'bday', 'cake', 'balloon'].some(k => t.toLowerCase().includes(k)));
+    }
     return true;
   });
 
@@ -87,7 +119,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       tag: "👑 कम्प्लीट वेडिंग एवं पार्टी स्टूडियो",
       hindiTitle: "विवाह एवं शुभ उत्सव डिजाइन्स 💍",
       englishTitle: "Marriage & Celebration Custom Studio",
-      subtitle: "हाथ से नक्काशीदार 3D दूल्हा-दुल्हन स्टेज बोर्ड्स, निकाह मुबारक कटआउट्स, और बर्थडे केक टेबल डेकोरेशन।"
+      subtitle: "हाथ से नक्काशीदार 3D दूल्हा-दुल्हन स्टेज बोर्ड्स, निकाह मुबारक कटआउट्स, हल्दी-मेहंदी प्रॉप्स और बर्थडे केक टेबल डेकोरेशन।"
     },
     hindu: {
       tag: "🕉️ शुभ विवाह एवं मंडप स्पेशल",
@@ -100,6 +132,18 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       hindiTitle: "इस्लामिक निकाह व वलीमा डिजाइन्स 🌙",
       englishTitle: "Islamic Nikah Mubarak 3D Cutouts & Backdrops",
       subtitle: "शाही निकाह मुबारक 3D कटआउट्स, चांद-तारा फ्लोरल आर्क, उर्दू कैलीग्राफी और वेलकम ईजल बोर्ड्स।"
+    },
+    haldi: {
+      tag: "💛 हल्दी सेरेमनी व वेलकम बोर्ड्स",
+      hindiTitle: "हल्दी सेरेमनी स्पेशल स्टेज व प्रॉप्स 💛",
+      englishTitle: "Haldi Ceremony 3D Name Boards & Entry Easels",
+      subtitle: "ब्राइट यलो हल्दी वेलकम बोर्ड्स, 'हल्दी कुमकुम' कटआउट्स, फ्लोरल ईजल डेकोर और कस्टमाइज्ड सेल्फी प्रॉप्स।"
+    },
+    mehndi: {
+      tag: "💚 मेहंदी व संगीत सेरेमनी स्पेशल",
+      hindiTitle: "मेहंदी है रचने वाली — स्टेज व बैकड्रॉप बोर्ड्स 💚",
+      englishTitle: "Mehndi & Sangeet Custom Stage Cutouts & Decor",
+      subtitle: "3D मेहंदी स्टेज कटआउट्स, 'दुल्हनिया की मेहंदी' नेम बोर्ड्स, ढोलक-शहनाई आर्टवर्क और ब्राइडल बैकड्रॉप्स।"
     },
     birthday: {
       tag: "🎂 बर्थडे व माइलस्टोन सेलिब्रेशन",
@@ -115,6 +159,30 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
     <div className="py-8 lg:py-14 bg-brand-cream-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Back to Home Breadcrumb & Navigation Bar */}
+        <div className="flex items-center justify-between mb-6 pb-2">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-brand-purple-50 text-brand-purple-950 font-bold text-xs sm:text-sm border border-brand-cream-300 shadow-2xs hover:shadow-sm hover:border-brand-purple-300 transition-all duration-200 group"
+          >
+            <ArrowLeft className="w-4 h-4 text-brand-purple-700 group-hover:-translate-x-1 transition-transform" />
+            <Home className="w-4 h-4 text-brand-gold-600" />
+            <span>Back to Home</span>
+          </Link>
+
+          <div className="hidden sm:flex items-center gap-2 text-xs font-semibold text-slate-500">
+            <Link to="/" className="hover:text-brand-purple-900 transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-brand-purple-900 font-bold">Marriage Designs</span>
+            {activeTab !== 'all' && (
+              <>
+                <span>/</span>
+                <span className="text-brand-rose-600 font-bold capitalize">{activeTab}</span>
+              </>
+            )}
+          </div>
+        </div>
+
         {/* Grand Luxurious Festive Header Banner */}
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-brand-purple-950 via-brand-purple-900 to-brand-rose-950 text-white p-6 sm:p-10 md:p-12 shadow-2xl border-2 border-brand-gold-400/40 mb-10">
           

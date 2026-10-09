@@ -70,7 +70,7 @@ export default function Navbar({ onOpenSearch }) {
 
   const marriageCategories = [
     {
-      name: "Hindu Design",
+      name: "Hindu Vivah Design",
       hindi: "हिन्दू विवाह डिजाइन",
       path: "/marriage-designs?type=hindu",
       desc: "Shubh Vivah, Kalash, Peacock & Mandap Stage Boards",
@@ -81,7 +81,7 @@ export default function Navbar({ onOpenSearch }) {
       badge: "Shubh Vivah"
     },
     {
-      name: "Islamic Design",
+      name: "Islamic Nikah Design",
       hindi: "इस्लामिक निकाह डिजाइन",
       path: "/marriage-designs?type=islamic",
       desc: "Nikah Mubarak, Walima Welcome & Crescent Cutouts",
@@ -90,6 +90,28 @@ export default function Navbar({ onOpenSearch }) {
       iconBg: "bg-emerald-100/90 border-emerald-300",
       badgeClass: "bg-emerald-200 text-emerald-900 border border-emerald-300",
       badge: "Nikah Mubarak"
+    },
+    {
+      name: "Haldi Ceremony",
+      hindi: "हल्दी सेरेमनी डिजाइन",
+      path: "/marriage-designs?type=haldi",
+      desc: "Yellow Floral Welcome Easels, Kumkum & Selfie Props",
+      icon: "💛",
+      cardBg: "bg-amber-50/80 hover:bg-amber-100 border-amber-200",
+      iconBg: "bg-amber-100/90 border-amber-300",
+      badgeClass: "bg-amber-200 text-amber-900 border border-amber-300",
+      badge: "Haldi Special"
+    },
+    {
+      name: "Mehndi Ceremony",
+      hindi: "मेहंदी व संगीत डिजाइन",
+      path: "/marriage-designs?type=mehndi",
+      desc: "Dulhaniya Ki Mehndi, Dholak Backdrops & Stage Decor",
+      icon: "💚",
+      cardBg: "bg-teal-50/80 hover:bg-teal-100 border-teal-200",
+      iconBg: "bg-teal-100/90 border-teal-300",
+      badgeClass: "bg-teal-200 text-teal-900 border border-teal-300",
+      badge: "Mehndi Decor"
     },
     {
       name: "Birthday Design",

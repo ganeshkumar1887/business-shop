@@ -7,7 +7,8 @@ import {
   MessageCircle, 
   Heart, 
   Instagram, 
-  Facebook 
+  Facebook,
+  Mail
 } from 'lucide-react';
 import { SHOP_CONFIG } from '../data/config';
 import { logoImg } from '../data/images';
@@ -150,6 +151,12 @@ export default function Footer() {
                 <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                 <a href={getGeneralInquiryUrl()} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold-300">
                   {SHOP_CONFIG.whatsappNumber}
+                </a>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-brand-gold-400 shrink-0" />
+                <a href={`mailto:${SHOP_CONFIG.email}`} className="hover:text-brand-gold-300 truncate">
+                  {SHOP_CONFIG.email}
                 </a>
               </li>
             </ul>

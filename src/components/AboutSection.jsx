@@ -13,24 +13,25 @@ export default function AboutSection() {
           
           {/* Left Imagery Showcase */}
           <div className="lg:col-span-6 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white aspect-[4/3] sm:aspect-[16/11] bg-brand-cream-200 group">
-              <img
-                src={IMAGES.about.shopFront}
-                alt="Shree Bhagwan Thermocol and Gift Workshop Studio"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              
-              {/* Floating Experience Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-panel text-slate-900 border border-brand-gold-400/40 shadow-xl flex items-center justify-between">
-                <div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-brand-purple-900">आपके शहर की अपनी दुकान</p>
-                  <p className="font-serif font-extrabold text-lg text-brand-purple-950">२० वर्षों का अटूट विश्वास</p>
-                </div>
-                <div className="w-12 h-12 rounded-xl bg-brand-gold-500 text-brand-purple-950 flex items-center justify-center font-extrabold text-lg shadow-sm">
-                  20+
-                </div>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-gradient-to-b from-brand-purple-950 via-brand-purple-900 to-brand-purple-950 p-2.5 sm:p-3 group">
+              <div className="relative rounded-2xl overflow-hidden bg-brand-purple-950/90 flex items-center justify-center">
+                <img
+                  src={IMAGES.about.shopFront}
+                  alt="Shree Bhagwan Thermocol and Gift Workshop Studio"
+                  className="w-full h-auto max-h-[460px] object-contain rounded-xl group-hover:scale-102 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            {/* Experience Badge Placed Clearly Below Without Obscuring Art */}
+            <div className="mt-3 p-4 rounded-2xl bg-white text-slate-900 border border-brand-cream-300 shadow-md flex items-center justify-between">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-wider text-brand-rose-600">आपके शहर की अपनी दुकान</p>
+                <p className="font-serif font-extrabold text-base sm:text-lg text-brand-purple-950">२० वर्षों का अटूट विश्वास</p>
+              </div>
+              <div className="w-12 h-12 rounded-xl bg-brand-gold-500 text-brand-purple-950 flex items-center justify-center font-extrabold text-lg shadow-sm">
+                20+
               </div>
             </div>
           </div>

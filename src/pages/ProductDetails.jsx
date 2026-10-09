@@ -8,6 +8,7 @@ import {
   Sparkles, 
   Check, 
   ArrowLeft,
+  Home,
   Truck, 
   ShieldCheck, 
   RotateCcw, 
@@ -117,17 +118,26 @@ export default function ProductDetails({ onQuickView, onOrderNow }) {
     <div className="py-8 lg:py-14 bg-brand-cream-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Breadcrumb Navigation */}
-        <div className="mb-6 flex items-center justify-between text-xs sm:text-sm">
-          <button
-            onClick={() => navigate(-1)}
-            className="inline-flex items-center gap-1.5 font-bold text-brand-purple-900 hover:text-brand-rose-600 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Products</span>
-          </button>
+        {/* Breadcrumb Navigation & Back to Home */}
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
+          <div className="flex items-center gap-2">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-brand-purple-50 text-brand-purple-950 font-bold text-xs border border-brand-cream-300 shadow-2xs hover:shadow-sm transition-all"
+            >
+              <Home className="w-3.5 h-3.5 text-brand-gold-600" />
+              <span>Back to Home</span>
+            </Link>
+            <button
+              onClick={() => navigate(-1)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-brand-rose-50 text-brand-rose-700 font-bold text-xs border border-brand-cream-300 shadow-2xs hover:shadow-sm transition-all"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Back to Products</span>
+            </button>
+          </div>
 
-          <div className="hidden sm:flex items-center gap-2 text-slate-400">
+          <div className="hidden sm:flex items-center gap-2 text-slate-400 text-xs">
             <Link to="/" className="hover:text-brand-purple-900">Home</Link>
             <span>/</span>
             <Link to={`/products?category=${product.categoryId}`} className="hover:text-brand-purple-900">{product.category}</Link>

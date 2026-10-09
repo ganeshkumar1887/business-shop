@@ -264,6 +264,83 @@ export default function Hero() {
               </Link>
             </div>
 
+            {/* Direct Order Ceremony Wedding Boards Quick Selector */}
+            <div className="pt-3 max-w-4xl mx-auto w-full border-t border-brand-cream-300/80">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 pb-2 text-center sm:text-left">
+                <span className="text-xs font-bold text-brand-purple-950 flex items-center gap-1.5">
+                  <Crown className="w-3.5 h-3.5 text-brand-gold-600" />
+                  <span>Order Wedding &amp; Event Stage Boards by Ceremony:</span>
+                </span>
+                <span className="text-[11px] text-brand-rose-600 font-bold">
+                  ✨ 100% Customized with Groom &amp; Bride Names
+                </span>
+              </div>
+
+              {/* Ceremony Options Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 pt-1">
+                {[
+                  {
+                    name: "Hindu Vivah",
+                    hindi: "शुभ विवाह बोर्ड",
+                    path: "/marriage-designs?type=hindu",
+                    icon: "🕉️",
+                    bg: "bg-orange-50/90 hover:bg-orange-100 text-orange-950 border-orange-200",
+                    badge: "Mandap & Stage",
+                    badgeColor: "bg-orange-200 text-orange-900"
+                  },
+                  {
+                    name: "Muslim / Nikah",
+                    hindi: "निकाह मुबारक बोर्ड",
+                    path: "/marriage-designs?type=islamic",
+                    icon: "🌙",
+                    bg: "bg-emerald-50/90 hover:bg-emerald-100 text-emerald-950 border-emerald-200",
+                    badge: "Walima & Stage",
+                    badgeColor: "bg-emerald-200 text-emerald-900"
+                  },
+                  {
+                    name: "Haldi Ceremony",
+                    hindi: "हल्दी सेरेमनी बोर्ड",
+                    path: "/marriage-designs?type=haldi",
+                    icon: "💛",
+                    bg: "bg-amber-50/90 hover:bg-amber-100 text-amber-950 border-amber-200",
+                    badge: "Yellow Props",
+                    badgeColor: "bg-amber-200 text-amber-900"
+                  },
+                  {
+                    name: "Mehndi Ceremony",
+                    hindi: "मेहंदी सेरेमनी बोर्ड",
+                    path: "/marriage-designs?type=mehndi",
+                    icon: "💚",
+                    bg: "bg-teal-50/90 hover:bg-teal-100 text-teal-950 border-teal-200",
+                    badge: "Floral & Stage",
+                    badgeColor: "bg-teal-200 text-teal-900"
+                  },
+                  {
+                    name: "Birthday Party",
+                    hindi: "बर्थडे 3D कटआउट्स",
+                    path: "/marriage-designs?type=birthday",
+                    icon: "🎂",
+                    bg: "bg-sky-50/90 hover:bg-sky-100 text-sky-950 border-sky-200",
+                    badge: "Name & Age 3D",
+                    badgeColor: "bg-sky-200 text-sky-900"
+                  }
+                ].map((item, i) => (
+                  <Link
+                    key={i}
+                    to={item.path}
+                    className={`flex flex-col items-center text-center p-2.5 rounded-2xl border transition-all duration-200 shadow-2xs hover:shadow-md hover:-translate-y-0.5 group ${item.bg}`}
+                  >
+                    <span className="text-2xl group-hover:scale-115 transition-transform mb-1">{item.icon}</span>
+                    <span className="font-serif font-bold text-xs leading-tight text-brand-purple-950 group-hover:text-brand-purple-800">{item.name}</span>
+                    <span className="text-[10px] text-slate-600 font-medium mt-0.5">{item.hindi}</span>
+                    <span className={`mt-1.5 text-[9px] font-extrabold px-2 py-0.5 rounded-full ${item.badgeColor}`}>
+                      {item.badge}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             {/* Micro Trust Factors */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-brand-cream-300 text-slate-800 text-[11px] sm:text-xs font-bold max-w-4xl mx-auto">
               <div className="flex items-center justify-center gap-1.5 p-2 bg-brand-cream-50/90 border border-brand-cream-200 rounded-xl shadow-2xs">

@@ -96,6 +96,24 @@ export default function ContactSection() {
                 </div>
               </div>
 
+              {/* Email & Support Card */}
+              <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-brand-cream-300">
+                <div className="w-11 h-11 rounded-xl bg-purple-100 text-purple-900 flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="text-xs font-bold uppercase text-slate-500 tracking-wider">
+                    EMAIL ADDRESS
+                  </h4>
+                  <a 
+                    href={`mailto:${SHOP_CONFIG.email}`} 
+                    className="font-semibold text-brand-purple-900 hover:text-brand-purple-950 text-sm mt-0.5 block truncate underline"
+                  >
+                    {SHOP_CONFIG.email}
+                  </a>
+                </div>
+              </div>
+
               {/* Opening Hours Card */}
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-white border border-brand-cream-300">
                 <div className="w-11 h-11 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center shrink-0">

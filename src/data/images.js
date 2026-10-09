@@ -1,6 +1,7 @@
 // Standard local assets for 100% portable Vercel and local production builds
 import logoImg from '../assets/images/logo.png'; // Official Shree Bhagwan Logo
 import weddingCoupleImg from '../assets/images/wedding_couple_banner.png'; // Traditional Indian Wedding Couple
+import weddingCoupleIllustration from 'C:/Users/91778/.gemini/antigravity-ide/brain/f97c0d96-3fd0-45ac-a347-00cbfcfcad61/.user_uploaded/media_1791564751376.png'; // Handcrafted Royal Wedding Couple
 import birthdayHamperImg from '../assets/images/birthday_gift_hamper.jpg'; // Premium Birthday Gift Hamper
 import weddingHamperImg from '../assets/images/wedding_gift_hamper.jpg'; // Royal Wedding Wishes Gift Hamper
 import coupleHamperImg from '../assets/images/couple_gift_hamper.jpg'; // Together Always Romantic Couple Hamper
@@ -9,7 +10,7 @@ import heroImg3 from '../assets/images/media_1791386873261.jpg'; // Vikas Sang B
 import heroImg4 from '../assets/images/media_1791386857823.jpg'; // Dual hearts with roses
 import heroImg5 from '../assets/images/media_1791386837006.jpg'; // Heart with blue lotus roses
 
-export { logoImg, weddingCoupleImg, birthdayHamperImg, weddingHamperImg, coupleHamperImg, heroImg2, heroImg3, heroImg4, heroImg5 };
+export { logoImg, weddingCoupleImg, weddingCoupleIllustration, birthdayHamperImg, weddingHamperImg, coupleHamperImg, heroImg2, heroImg3, heroImg4, heroImg5 };
 
 export const HERO_SLIDES = [
   {
@@ -105,7 +106,7 @@ export const IMAGES = {
   weddingFeatures: {
     haldi: "https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?q=80&w=800&auto=format&fit=crop",
     mehndi: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=800&auto=format&fit=crop",
-    stage: heroImg2,
-    entry: heroImg2
+    stage: weddingCoupleIllustration,
+    entry: weddingCoupleIllustration
   }
 };

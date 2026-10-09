@@ -7,22 +7,22 @@ export const SHOP_CONFIG = {
   tagline: "थर्मोकोल एवं गिफ्ट आइटम्स",
   subTagline: "हर उत्सव को बनाएं और भी खास ✨",
   
-  // Contact numbers (editable placeholders)
-  phone: "+91 98765 43210",
-  phoneRaw: "919876543210",
-  whatsappNumber: "+91 98765 43210",
-  whatsappRaw: "919876543210", // No plus or spaces for WhatsApp API URL
-  alternatePhone: "+91 98765 12345",
-  email: "contact@shreebhagwan.com",
+  // Contact numbers
+  phone: "+91 82184 39001",
+  phoneRaw: "918218439001",
+  whatsappNumber: "+91 82184 39001",
+  whatsappRaw: "918218439001", // No plus or spaces for WhatsApp API URL
+  alternatePhone: "+91 82184 39001",
+  email: "kumarganesh07340@gmail.com",
   
   // Location details
   address: {
-    line1: "Main Market Road, Near City Plaza",
-    landmark: "Opposite Wedding Palace",
-    city: "New Delhi",
-    state: "Delhi",
-    pincode: "110001",
-    fullAddress: "Main Market Road, Near City Plaza, Opposite Wedding Palace, New Delhi, Delhi - 110001"
+    line1: "Mehiya Kumhar Toli",
+    landmark: "Near Shanti Vat Vriksh (Jhagrhwa Bar)",
+    city: "Siwan",
+    state: "Bihar",
+    pincode: "841226",
+    fullAddress: "Mehiya Kumhar Toli, Near Shanti Vat Vriksh (Jhagrhwa Bar), Siwan, Bihar - 841226"
   },
   
   // Operating Hours
@@ -44,12 +44,12 @@ export const SHOP_CONFIG = {
   social: {
     instagram: "https://instagram.com/shreebhagwan_gifts",
     facebook: "https://facebook.com/shreebhagwangifts",
-    whatsapp: "https://wa.me/919876543210"
+    whatsapp: "https://wa.me/918218439001"
   },
   
-  // Google Maps Coordinates & Embed URL
+  // Google Maps Coordinates & Embed URL (Siwan, Bihar 841226)
   maps: {
-    embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d112061.27218320498!2d77.1000!3d28.6400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sNew%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
-    directDirectionsUrl: "https://maps.google.com/?q=Shree+Bhagwan+Thermocol+Gift+Items"
+    embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57274.65687799516!2d84.3200!3d26.2200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3992fc0a7905f597%3A0xb35a39fb5cf8f4c1!2sSiwan%2C%20Bihar%20841226!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
+    directDirectionsUrl: "https://maps.google.com/?q=Mehiya+Kumhar+Toli+Near+Shanti+Vat+Vriksh+Siwan+Bihar+841226"
   }
 };
