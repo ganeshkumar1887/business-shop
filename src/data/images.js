@@ -1,7 +1,7 @@
 // Standard local assets for 100% portable Vercel and local production builds
 import logoImg from '../assets/images/logo.png'; // Official Shree Bhagwan Logo
 import weddingCoupleImg from '../assets/images/wedding_couple_banner.png'; // Traditional Indian Wedding Couple
-import weddingCoupleIllustration from 'C:/Users/91778/.gemini/antigravity-ide/brain/f97c0d96-3fd0-45ac-a347-00cbfcfcad61/.user_uploaded/media_1791564751376.png'; // Handcrafted Royal Wedding Couple
+import weddingCoupleIllustration from '../assets/images/wedding_couple_banner.png'; // Handcrafted Royal Wedding Couple
 import birthdayHamperImg from '../assets/images/birthday_gift_hamper.jpg'; // Premium Birthday Gift Hamper
 import weddingHamperImg from '../assets/images/wedding_gift_hamper.jpg'; // Royal Wedding Wishes Gift Hamper
 import coupleHamperImg from '../assets/images/couple_gift_hamper.jpg'; // Together Always Romantic Couple Hamper
