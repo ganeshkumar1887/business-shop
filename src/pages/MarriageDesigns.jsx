@@ -23,6 +23,9 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
   const typeParam = searchParams.get('type') || 'all';
 
   const [activeTab, setActiveTab] = useState(typeParam);
+  const [selectedDesign, setSelectedDesign] = useState(
+    PRODUCTS.find(p => p.id === 'mor-phool-tabla') || PRODUCTS[0]
+  );
 
   useEffect(() => {
     if (typeParam) {
@@ -40,6 +43,14 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
     }
   };
 
+  const handleSelectDesign = (product) => {
+    setSelectedDesign(product);
+    const element = document.getElementById('live-customizer');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const tabs = [
     { 
       id: 'all', 
@@ -47,7 +58,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       englishLabel: 'All Designs',
       icon: '✨', 
       sub: 'कम्प्लीट कैटलॉग',
-      count: PRODUCTS.length,
+      count: PRODUCTS.filter(p => p.designType || p.categoryId === 'hindu-design' || p.categoryId === 'islamic-design' || p.categoryId === 'haldi-design' || p.categoryId === 'mehndi-design' || p.categoryId === 'birthday-design' || p.tags?.includes('hindu-stage-board')).length,
       activeClass: 'from-brand-purple-900 to-brand-rose-900 text-white shadow-luxury ring-2 ring-brand-gold-400'
     },
     { 
@@ -56,6 +67,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       englishLabel: 'Hindu Vivah',
       icon: '🕉️', 
       sub: 'शुभ विवाह व मंडप बोर्ड',
+      count: PRODUCTS.filter(p => p.designType === 'hindu' || p.categoryId === 'hindu-design' || p.tags?.includes('hindu-stage-board')).length,
       activeClass: 'from-amber-600 to-amber-800 text-white shadow-luxury ring-2 ring-amber-300'
     },
     { 
@@ -64,6 +76,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       englishLabel: 'Islamic Nikah',
       icon: '🌙', 
       sub: 'निकाह मुबारक व वलीमा',
+      count: PRODUCTS.filter(p => p.designType === 'islamic' || p.categoryId === 'islamic-design').length,
       activeClass: 'from-emerald-700 to-emerald-900 text-white shadow-luxury ring-2 ring-emerald-300'
     },
     { 
@@ -72,6 +85,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       englishLabel: 'Haldi Ceremony',
       icon: '💛', 
       sub: 'येलो वेलकम व प्रॉप्स',
+      count: PRODUCTS.filter(p => p.designType === 'haldi' || p.categoryId === 'haldi-design').length,
       activeClass: 'from-amber-500 to-yellow-600 text-white shadow-luxury ring-2 ring-yellow-300'
     },
     { 
@@ -80,6 +94,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       englishLabel: 'Mehndi Ceremony',
       icon: '💚', 
       sub: 'मेहंदी व संगीत स्टेज बोर्ड्स',
+      count: PRODUCTS.filter(p => p.designType === 'mehndi' || p.categoryId === 'mehndi-design').length,
       activeClass: 'from-teal-600 to-emerald-800 text-white shadow-luxury ring-2 ring-teal-300'
     },
     { 
@@ -88,16 +103,17 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       englishLabel: 'Birthday Design',
       icon: '🎂', 
       sub: '3D एज व केक टेबल बोर्ड',
+      count: PRODUCTS.filter(p => p.designType === 'birthday' || p.categoryId === 'birthday-design').length,
       activeClass: 'from-sky-600 to-blue-700 text-white shadow-luxury ring-2 ring-sky-300'
     },
   ];
 
   const filteredProducts = PRODUCTS.filter((p) => {
     if (activeTab === 'all') {
-      return p.designType || p.categoryId === 'thermocol-event-decoration' || p.categoryId === 'customized-event-orders' || p.tags?.some(t => ['wedding', 'marriage', 'shubh vivah', 'nikah', 'haldi', 'mehndi', 'birthday', 'thermocol', 'board', 'stage'].some(k => t.toLowerCase().includes(k)));
+      return p.designType || p.categoryId === 'hindu-design' || p.categoryId === 'islamic-design' || p.categoryId === 'haldi-design' || p.categoryId === 'mehndi-design' || p.categoryId === 'birthday-design' || p.tags?.some(t => ['hindu-stage-board', 'shubh vivah', 'nikah', 'haldi', 'mehndi'].includes(t));
     }
     if (activeTab === 'hindu') {
-      return p.designType === 'hindu' || p.categoryId === 'hindu-design' || p.tags?.some(t => ['hindu', 'shubh', 'vivah', 'mandap', 'wedding', 'peacock', 'kalash', 'radha'].some(k => t.toLowerCase().includes(k)));
+      return p.designType === 'hindu' || p.categoryId === 'hindu-design' || p.tags?.includes('hindu-stage-board');
     }
     if (activeTab === 'islamic') {
       return p.designType === 'islamic' || p.categoryId === 'islamic-design' || p.tags?.some(t => ['islamic', 'nikah', 'walima', 'muslim', 'crescent', 'urdu'].some(k => t.toLowerCase().includes(k)));
@@ -109,7 +125,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
       return p.designType === 'mehndi' || p.categoryId === 'mehndi-design' || p.tags?.some(t => ['mehndi', 'mehandi', 'sangeet', 'henna', 'bridal', 'dholak'].some(k => t.toLowerCase().includes(k)));
     }
     if (activeTab === 'birthday') {
-      return p.designType === 'birthday' || p.categoryId === 'birthday-design' || p.categoryId === 'birthday-gifts' || p.tags?.some(t => ['birthday', 'bday', 'cake', 'balloon'].some(k => t.toLowerCase().includes(k)));
+      return p.designType === 'birthday' || p.categoryId === 'birthday-design';
     }
     return true;
   });
@@ -369,7 +385,10 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
 
         {/* Live Interactive Board Simulator */}
         <div className="mb-16">
-          <LiveNamePreviewer />
+          <LiveNamePreviewer 
+            selectedDesign={selectedDesign}
+            onSelectDesign={setSelectedDesign}
+          />
         </div>
 
         {/* Catalog Grid for Current Selection */}
@@ -401,6 +420,7 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
                 product={product}
                 onQuickView={onQuickView}
                 onOrderNow={onOrderNow}
+                onSelectForCustomizer={handleSelectDesign}
               />
             ))}
           </div>

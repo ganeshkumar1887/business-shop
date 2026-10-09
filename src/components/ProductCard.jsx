@@ -16,12 +16,19 @@ import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
 import { getProductOrderUrl } from '../utils/whatsapp';
 
-export default function ProductCard({ product, onQuickView, onOrderNow }) {
+export default function ProductCard({ product, onQuickView, onOrderNow, onSelectForCustomizer }) {
   const { isInWishlist, toggleWishlist } = useWishlist();
   const { addToCart } = useCart();
   const [isAdded, setIsAdded] = useState(false);
 
   const isFavorite = isInWishlist(product.id);
+
+  const handleCardSelection = (e) => {
+    if (onSelectForCustomizer) {
+      e.preventDefault();
+      onSelectForCustomizer(product);
+    }
+  };
 
   const handleAddToCart = (e) => {
     e.preventDefault();
@@ -50,18 +57,34 @@ export default function ProductCard({ product, onQuickView, onOrderNow }) {
   };
 
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden border border-brand-cream-300 hover:border-brand-purple-300/80 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_30px_-6px_rgba(42,14,97,0.15)] transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5">
+    <div 
+      onClick={onSelectForCustomizer ? handleCardSelection : undefined}
+      className={`group bg-white rounded-3xl overflow-hidden border border-brand-cream-300 hover:border-brand-purple-300/80 shadow-[0_2px_12px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_30px_-6px_rgba(42,14,97,0.15)] transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 ${
+        onSelectForCustomizer ? 'cursor-pointer hover:ring-2 hover:ring-brand-gold-400/50' : ''
+      }`}
+    >
       
       {/* Top Image Box */}
       <div className="relative aspect-square overflow-hidden bg-gradient-to-b from-brand-cream-100/60 via-white to-brand-cream-100/40 border-b border-brand-cream-200/80 flex items-center justify-center p-3">
-        <Link to={`/products/${product.id}`} className="w-full h-full flex items-center justify-center">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="max-h-full max-w-full w-auto h-auto object-contain rounded-2xl drop-shadow-sm group-hover:scale-108 transition-transform duration-500 ease-out"
-            loading="lazy"
-          />
-        </Link>
+        {onSelectForCustomizer ? (
+          <div className="w-full h-full flex items-center justify-center">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="max-h-full max-w-full w-auto h-auto object-contain rounded-2xl drop-shadow-sm group-hover:scale-108 transition-transform duration-500 ease-out"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <Link to={`/products/${product.id}`} className="w-full h-full flex items-center justify-center">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="max-h-full max-w-full w-auto h-auto object-contain rounded-2xl drop-shadow-sm group-hover:scale-108 transition-transform duration-500 ease-out"
+              loading="lazy"
+            />
+          </Link>
+        )}
 
         {/* Top Left Badges: Customizable / Discount / Bestseller */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start z-10 pointer-events-none">
@@ -127,11 +150,19 @@ export default function ProductCard({ product, onQuickView, onOrderNow }) {
           </div>
 
           {/* Product Title */}
-          <Link to={`/products/${product.id}`} className="block group/title">
-            <h3 className="font-outfit font-extrabold text-base sm:text-lg text-brand-purple-950 group-hover/title:text-brand-purple-800 transition-colors line-clamp-1 mb-2.5 leading-snug">
-              {product.name}
-            </h3>
-          </Link>
+          {onSelectForCustomizer ? (
+            <div className="block group/title">
+              <h3 className="font-outfit font-extrabold text-base sm:text-lg text-brand-purple-950 group-hover/title:text-brand-purple-800 transition-colors line-clamp-1 mb-2.5 leading-snug">
+                {product.name}
+              </h3>
+            </div>
+          ) : (
+            <Link to={`/products/${product.id}`} className="block group/title">
+              <h3 className="font-outfit font-extrabold text-base sm:text-lg text-brand-purple-950 group-hover/title:text-brand-purple-800 transition-colors line-clamp-1 mb-2.5 leading-snug">
+                {product.name}
+              </h3>
+            </Link>
+          )}
 
           {/* Price Section */}
           <div className="mb-4 font-outfit">

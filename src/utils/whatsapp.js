@@ -76,17 +76,24 @@ export function getCustomDesignQuoteUrl(designData = {}) {
  * WhatsApp message for live interactive name board customizer
  */
 export function getLiveCustomizerUrl(customizerState) {
-  const { groomName, brideName, baratFrom, baratTo, eventDate } = customizerState;
+  const { groomName, brideName, baratFrom, baratTo, eventDate, deliveryDate, designName, includeSmallBoard, totalPrice } = customizerState;
   
-  let message = `🛍️ *नया कस्टमाइज्ड बोर्ड ऑर्डर / NEW 3D BOARD ORDER — ${SHOP_CONFIG.shopName}*\n\n`;
+  const price = totalPrice || (includeSmallBoard ? 450 : 400);
+  const smallBoardText = includeSmallBoard ? 'हाँ (Yes) — ₹50 शामिल' : 'नहीं (No)';
+
+  let message = `🛍️ *नया कस्टमाइज्ड 3D थर्मोकोल बोर्ड ऑर्डर — ${SHOP_CONFIG.shopName}*\n\n`;
+  message += `🎨 *चयनित डिजाइन (Selected Design):* ${designName || 'मोर फूल तबला'}\n`;
+  message += `💰 *कुल मूल्य (Total Price):* ₹${price}\n`;
+  message += `📦 *छोटा बोर्ड (Small Gate Board):* ${smallBoardText}\n\n`;
   message += `💍 *विवाह विवरण (Wedding Details):*\n`;
-  message += `• दूल्हा (Groom): *${groomName || 'N/A'}*\n`;
-  message += `• दुल्हन (Bride): *${brideName || 'N/A'}*\n`;
-  if (baratFrom) message += `• बारात कहाँ से (From): *${baratFrom}*\n`;
-  if (baratTo) message += `• बारात कहाँ तक (To): *${baratTo}*\n`;
-  if (eventDate) message += `• विवाह तिथि (Date): *${eventDate}*\n\n`;
+  message += `• दूल्हा (Groom): ${groomName || 'N/A'}\n`;
+  message += `• दुल्हन (Bride): ${brideName || 'N/A'}\n`;
+  if (baratFrom) message += `• बारात कहाँ से (From): ${baratFrom}\n`;
+  if (baratTo) message += `• बारात कहाँ तक (To): ${baratTo}\n`;
+  if (eventDate) message += `• विवाह तिथि (Wedding Date): ${eventDate}\n`;
+  if (deliveryDate) message += `• 🚚 डिलीवरी तिथि (Delivery Date): ${deliveryDate}\n\n`;
   
-  message += `कृपया मुझे इस 3D थर्मोकोल बोर्ड का फाइनल कोटेशन व डिलीवरी समय बताएं। धन्यवाद!`;
+  message += `कृपया मुझे इस 3D थर्मोकोल बोर्ड का फाइनल कन्फर्मेशन व डिलीवरी समय बताएं। धन्यवाद!`;
   return getWhatsAppUrl(message);
 }
 
