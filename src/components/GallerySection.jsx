@@ -49,12 +49,12 @@ export default function GallerySection({ limit = null }) {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
+        <div className="flex flex-wrap items-center justify-center gap-2 pb-2 mb-10">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                 activeTab === tab.id
                   ? 'bg-brand-purple-900 text-white shadow-md'
                   : 'bg-white text-slate-700 hover:bg-brand-cream-200 border border-brand-cream-300'

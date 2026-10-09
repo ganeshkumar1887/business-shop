@@ -279,14 +279,14 @@ export default function GiftShopSection({ onQuickView, onOrderNow }) {
           </div>
 
           {/* Quick Filter Pill Buttons */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+          <div className="flex flex-wrap items-center gap-2 pb-2">
             {quickTabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-outfit font-bold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-outfit font-bold transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'bg-brand-purple-950 text-white shadow-md shadow-brand-purple-950/20 ring-2 ring-brand-purple-400'
                       : 'bg-white text-slate-700 hover:bg-brand-cream-200 border border-brand-cream-300 hover:border-brand-purple-300'

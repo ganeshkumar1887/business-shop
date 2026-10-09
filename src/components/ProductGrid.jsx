@@ -55,12 +55,12 @@ export default function ProductGrid({ limit = null, initialCategory = 'all', sho
 
         {/* Filter Pills */}
         {showFilters && (
-          <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+          <div className="flex flex-wrap items-center gap-2 pb-2 mb-8">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 ${
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   activeCategory === cat.id
                     ? 'bg-brand-purple-900 text-white shadow-md'
                     : 'bg-brand-cream-100 text-slate-700 hover:bg-brand-cream-200'

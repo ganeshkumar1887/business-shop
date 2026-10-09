@@ -184,10 +184,10 @@ export default function Products({ onQuickView, onOrderNow }) {
             )}
           </div>
 
-          <div className="flex items-center gap-2.5 overflow-x-auto pb-3 pt-1 scrollbar-thin scrollbar-thumb-brand-purple-200 scrollbar-track-brand-cream-100">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 pt-1">
             <button
               onClick={() => handleCategoryChange('all')}
-              className={`px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all duration-200 shrink-0 border flex items-center gap-1.5 shadow-2xs ${
+              className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 border flex items-center gap-1.5 shadow-2xs ${
                 activeCategory === 'all'
                   ? 'bg-brand-purple-950 text-brand-gold-300 border-brand-gold-400 shadow-md scale-105'
                   : 'bg-white text-slate-700 hover:bg-brand-cream-100 border-brand-cream-300'
@@ -201,7 +201,7 @@ export default function Products({ onQuickView, onOrderNow }) {
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.slug)}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all duration-200 shrink-0 border flex items-center gap-1.5 shadow-2xs ${
+                className={`px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 border flex items-center gap-1.5 shadow-2xs ${
                   activeCategory === cat.slug
                     ? 'bg-brand-purple-950 text-brand-gold-300 border-brand-gold-400 shadow-md scale-105'
                     : 'bg-white text-slate-700 hover:bg-brand-cream-100 border-brand-cream-300'

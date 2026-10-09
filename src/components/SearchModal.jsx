@@ -106,7 +106,7 @@ export default function SearchModal({ isOpen, onClose }) {
         </div>
 
         {/* Quick Suggestion Tags */}
-        <div className="px-5 py-3 bg-white border-b border-brand-cream-200 flex items-center gap-2 overflow-x-auto scrollbar-none text-xs">
+        <div className="px-5 py-3 bg-white border-b border-brand-cream-200 flex flex-wrap items-center gap-2 text-xs">
           <span className="text-slate-400 font-bold uppercase tracking-wider shrink-0 text-[10px]">
             Suggestions:
           </span>
@@ -114,7 +114,7 @@ export default function SearchModal({ isOpen, onClose }) {
             <button
               key={tag}
               onClick={() => handleTagClick(tag)}
-              className="px-2.5 py-1 rounded-lg bg-brand-cream-100 hover:bg-brand-purple-100 text-slate-700 hover:text-brand-purple-900 font-medium transition-colors shrink-0"
+              className="px-2.5 py-1 rounded-lg bg-brand-cream-100 hover:bg-brand-purple-100 text-slate-700 hover:text-brand-purple-900 font-medium transition-colors"
             >
               {tag}
             </button>
