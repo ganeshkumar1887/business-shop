@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, MessageCircle, MapPin, Calendar, Heart, Wand2, ArrowRight, Truck, CheckCircle2, Layers } from 'lucide-react';
 import { getLiveCustomizerUrl } from '../utils/whatsapp';
 import { PRODUCTS } from '../data/products';
+import { smallBoardDulhanImg } from '../data/images';
 
 export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
   // Available wedding stage designs (Hindu + Islamic)
@@ -298,7 +299,7 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
               </div>
             </div>
 
-            {/* 4. Small Board (छोटा बोर्ड) Yes / No Input */}
+            {/* 4. Small Board (छोटा बोर्ड - दुल्हन हम ले जायेंगे) Preview Card & Yes/No Options */}
             <div className="pt-2">
               <label className="block text-xs font-bold text-slate-800 mb-1.5 flex items-center justify-between">
                 <span className="flex items-center gap-1.5">
@@ -310,13 +311,65 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
                 </span>
               </label>
 
+              {/* Real Photo Showcase of Small Board: 'दुल्हन हम ले जायेंगे' */}
+              <div
+                onClick={() => setIncludeSmallBoard(!includeSmallBoard)}
+                className={`p-3 rounded-2xl border transition-all cursor-pointer relative overflow-hidden group mb-2.5 ${
+                  includeSmallBoard 
+                    ? 'bg-gradient-to-r from-emerald-50 via-rose-50/50 to-amber-50 border-emerald-400 ring-2 ring-emerald-400/40 shadow-sm'
+                    : 'bg-white hover:bg-slate-50/80 border-slate-200'
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  {/* Small Board Thumbnail Image */}
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden shrink-0 border-2 border-brand-gold-400/70 shadow-sm bg-brand-cream-100 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <img
+                      src={smallBoardDulhanImg}
+                      alt="छोटा बोर्ड - दुल्हन हम ले जायेंगे"
+                      className="w-full h-full object-contain p-0.5"
+                    />
+                    <span className="absolute bottom-1 right-1 bg-black/80 text-[9px] text-white px-1.5 py-0.2 rounded font-bold shadow-xs">
+                      +₹50
+                    </span>
+                  </div>
+
+                  {/* Details & Status Badge */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-1 mb-1">
+                      <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-brand-rose-700 bg-brand-rose-50 px-2 py-0.5 rounded-full border border-brand-rose-200">
+                        <span>✨</span> छोटा एंट्री / कार बोर्ड
+                      </span>
+                      <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full ${
+                        includeSmallBoard ? 'bg-emerald-200 text-emerald-900 border border-emerald-300' : 'bg-slate-100 text-slate-600'
+                      }`}>
+                        {includeSmallBoard ? '✓ शामिल है' : 'वैकल्पिक (+₹50)'}
+                      </span>
+                    </div>
+
+                    <h4 className="font-serif font-black text-xs sm:text-sm text-brand-purple-950 leading-tight">
+                      'दुल्हन हम ले जायेंगे' 3D कटआउट
+                    </h4>
+                    <p className="text-[11px] text-slate-600 line-clamp-2 mt-0.5 leading-snug">
+                      बारात कार, मंडप एंट्री गेट व फोटो प्रॉप्स के लिए हाथ से बना 3D ग्लिटर थर्मोकोल हार्ट कटआउट।
+                    </p>
+
+                    <div className="flex items-center gap-2 mt-1 text-[11px] font-bold">
+                      <span className="text-emerald-700">मात्र +₹50 अतिरिक्त</span>
+                      <span className="text-slate-300">•</span>
+                      <span className="text-brand-purple-900 font-medium">क्लिक करके जोड़ें/हटाएं</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Yes / No Selector Buttons */}
               <div className="grid grid-cols-2 gap-3">
                 <button
                   type="button"
                   onClick={() => setIncludeSmallBoard(false)}
                   className={`flex items-center justify-between p-3 rounded-2xl border text-left transition-all cursor-pointer ${
                     !includeSmallBoard
-                      ? 'border-brand-purple-600 bg-brand-purple-50 ring-2 ring-brand-purple-600/30'
+                      ? 'border-brand-purple-600 bg-brand-purple-50 ring-2 ring-brand-purple-600/30 shadow-xs'
                       : 'border-slate-200 bg-white hover:bg-slate-50'
                   }`}
                 >
@@ -332,7 +385,7 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
                   onClick={() => setIncludeSmallBoard(true)}
                   className={`flex items-center justify-between p-3 rounded-2xl border text-left transition-all cursor-pointer ${
                     includeSmallBoard
-                      ? 'border-emerald-600 bg-emerald-50 ring-2 ring-emerald-600/30'
+                      ? 'border-emerald-600 bg-emerald-50 ring-2 ring-emerald-600/30 shadow-xs'
                       : 'border-slate-200 bg-white hover:bg-slate-50'
                   }`}
                 >
@@ -464,13 +517,27 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
                     )}
                   </div>
 
-                  {/* Small Board Indicator */}
+                  {/* Small Board Indicator & Miniature Preview */}
                   {includeSmallBoard && (
-                    <div className="pt-1">
-                      <span className="inline-flex items-center gap-1 bg-amber-500/20 text-amber-300 text-xs font-bold px-3 py-0.5 rounded-full border border-amber-400/30">
-                        <CheckCircle2 className="w-3 h-3 text-amber-400" />
-                        <span>छोटा स्वागत बोर्ड शामिल (+₹50)</span>
-                      </span>
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+                      <div className="inline-flex items-center gap-2 p-1.5 px-3 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-200 text-xs font-bold">
+                        <div className="w-8 h-8 rounded-lg overflow-hidden border border-amber-300 shrink-0 bg-white/20">
+                          <img
+                            src={smallBoardDulhanImg}
+                            alt="दुल्हन हम ले जायेंगे"
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <div className="text-left">
+                          <div className="flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3 text-amber-300" />
+                            <span>छोटा बोर्ड शामिल (+₹50)</span>
+                          </div>
+                          <span className="text-[10px] text-brand-cream-300 font-normal">
+                            'दुल्हन हम ले जायेंगे' 3D कटआउट
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>

@@ -6,7 +6,8 @@ import {
   islamicBlueHeartDualStarImg,
   islamicTwinPinkHeartsRosesImg,
   islamicTwinGoldenHeartsCenterStarImg,
-  islamicTwinGoldHeartsRedRosesImg
+  islamicTwinGoldHeartsRedRosesImg,
+  smallBoardDulhanImg
 } from './images';
 
 export const GALLERY_ITEMS = [
@@ -87,6 +88,15 @@ export const GALLERY_ITEMS = [
     description: "पारंपरिक मोर व मंगल कलश कटआउट से सुसज्जित शुभ विवाह स्टेज नेम बोर्ड।",
     featured: true
   },
+  {
+    id: "gal-small-board-1",
+    title: "छोटा बोर्ड — 'दुल्हन हम ले जायेंगे'",
+    category: "weddings",
+    categoryLabel: "वेडिंग प्रॉप्स",
+    image: smallBoardDulhanImg,
+    client: "Wedding Special",
+    occasion: "बारात व गेट एंट्री",
+    description: "हस्तनिर्मित 3D ग्लिटर थर्मोकोल हार्ट कटआउट बोर्ड 'दुल्हन हम ले जायेंगे'।",
     featured: true
   },
   {

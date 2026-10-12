@@ -1,6 +1,5 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import TrustSection from '../components/TrustSection';
 import CategorySection from '../components/CategorySection';
 import LiveNamePreviewer from '../components/LiveNamePreviewer';
 import ProductGrid from '../components/ProductGrid';
@@ -17,9 +16,6 @@ export default function Home({ onQuickView, onOrderNow }) {
     <div>
       {/* Hero Banner */}
       <Hero />
-
-      {/* Trust & Highlight Badges */}
-      <TrustSection />
 
       {/* Find the Perfect Gift - 20 Gift Categories Showcase */}
       <GiftShopSection onQuickView={onQuickView} onOrderNow={onOrderNow} />

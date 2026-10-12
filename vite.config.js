@@ -15,15 +15,16 @@ function syncUploadedImages() {
     });
 
     if (fs.existsSync(currentUploadDir)) {
-      const islamicMapping = {
+      const uploadMapping = {
         'media_1791794611285.jpg': 'islamic_single_heart_lotus.jpg',
         'media_1791794630983.jpg': 'islamic_blue_heart_dual_star.jpg',
         'media_1791794645307.jpg': 'islamic_twin_pink_hearts_blue_roses.jpg',
         'media_1791794658555.jpg': 'islamic_twin_golden_hearts_center_star.jpg',
-        'media_1791794682822.jpg': 'islamic_twin_gold_hearts_red_roses.jpg'
+        'media_1791794682822.jpg': 'islamic_twin_gold_hearts_red_roses.jpg',
+        'media_1791796283042.png': 'small_board_dulhan_hum_le_jayenge.png'
       };
 
-      for (const [srcFile, destFile] of Object.entries(islamicMapping)) {
+      for (const [srcFile, destFile] of Object.entries(uploadMapping)) {
         const srcPath = path.join(currentUploadDir, srcFile);
         if (fs.existsSync(srcPath)) {
           fs.copyFileSync(srcPath, path.join(assetsTargetDir, destFile));

@@ -12,7 +12,8 @@ import {
   islamicBlueHeartDualStarImg,
   islamicTwinPinkHeartsRosesImg,
   islamicTwinGoldenHeartsCenterStarImg,
-  islamicTwinGoldHeartsRedRosesImg
+  islamicTwinGoldHeartsRedRosesImg,
+  smallBoardDulhanImg
 } from './images';
 
 export const PRODUCTS = [
@@ -258,6 +259,29 @@ export const PRODUCTS = [
       hasBaratRoute: true,
       sampleColors: ["मॉडर्न गोल्ड (Sleek Gold)", "सिल्वर-रोज़ (Rose Silver)"]
     }
+  },
+  {
+    id: "dulhan-hum-le-jayenge-board",
+    name: "दुल्हन हम ले जायेंगे (छोटा बोर्ड)",
+    nameEn: "Dulhan Hum Le Jayenge Small Board",
+    hindiName: "दुल्हन हम ले जायेंगे 3D कटआउट",
+    category: "Wedding Props & Small Boards",
+    categoryEn: "Wedding Props & Small Boards",
+    categoryId: "wedding-gifts",
+    subcategory: "छोटा गेट / बारात बोर्ड",
+    description: "हैंडक्राफ्टेड 3D थर्मोकोल हार्ट कटआउट बोर्ड 'दुल्हन हम ले जायेंगे'। बारात कार, स्वागत द्वार व वेडिंग फोटो सेशन के लिए परफेक्ट।",
+    price: 50,
+    originalPrice: 100,
+    discount: "50% OFF",
+    image: smallBoardDulhanImg,
+    rating: 5.0,
+    reviewsCount: 189,
+    customizable: false,
+    featured: true,
+    bestseller: true,
+    newArrival: true,
+    stock: "In Stock",
+    tags: ["chhota board", "dulhan hum le jayenge", "gate board", "props", "wedding prop", "thermocol"]
   },
   // ==========================================
   // ISLAMIC NIKAH & WALIMA DESIGNS (निकाह मुबारक 3D थर्मोकोल स्टेज बोर्ड्स)

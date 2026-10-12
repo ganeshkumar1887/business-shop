@@ -17,6 +17,9 @@ import islamicTwinPinkHeartsRosesImg from '../assets/images/islamic_twin_pink_he
 import islamicTwinGoldenHeartsCenterStarImg from '../assets/images/islamic_twin_golden_hearts_center_star.jpg';
 import islamicTwinGoldHeartsRedRosesImg from '../assets/images/islamic_twin_gold_hearts_red_roses.jpg';
 
+// Small Gate Board (छोटा बोर्ड - दुल्हन हम ले जायेंगे)
+import smallBoardDulhanImg from '../assets/images/small_board_dulhan_hum_le_jayenge.png';
+
 export { 
   logoImg, 
   weddingCoupleImg, 
@@ -32,7 +35,8 @@ export {
   islamicBlueHeartDualStarImg,
   islamicTwinPinkHeartsRosesImg,
   islamicTwinGoldenHeartsCenterStarImg,
-  islamicTwinGoldHeartsRedRosesImg
+  islamicTwinGoldHeartsRedRosesImg,
+  smallBoardDulhanImg
 };
 
 export const HERO_SLIDES = [
