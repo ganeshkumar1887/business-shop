@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, MessageCircle, MapPin, Calendar, Heart, Wand2, ArrowRight, Truck, CheckCircle2, Layers, Languages } from 'lucide-react';
+import { MessageCircle, MapPin, Calendar, Heart, Wand2, ArrowRight, Truck, CheckCircle2 } from 'lucide-react';
 import { getLiveCustomizerUrl } from '../utils/whatsapp';
 import { PRODUCTS } from '../data/products';
 import { smallBoardDulhanImg } from '../data/images';
@@ -14,14 +14,6 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
          p.designType === 'hindu' ||
          p.tags?.includes('hindu-stage-board')
   );
-
-  const [activeCategoryFilter, setActiveCategoryFilter] = useState('all'); // 'all', 'islamic', 'hindu'
-
-  const filteredDesigns = allStageDesigns.filter(d => {
-    if (activeCategoryFilter === 'islamic') return d.designType === 'islamic' || d.categoryId === 'islamic-design';
-    if (activeCategoryFilter === 'hindu') return d.designType === 'hindu' || d.categoryId === 'hindu-design';
-    return true;
-  });
 
   const [currentDesign, setCurrentDesign] = useState(
     selectedDesign || allStageDesigns[0] || {
@@ -94,14 +86,6 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
   // Convert on blur when leaving the input field
   const handleInputBlur = async (value, setter) => {
     if (inputLang === 'hi' && value && /[a-zA-Z]/.test(value)) {
-      const converted = await transliterateFullText(value);
-      setter(converted);
-    }
-  };
-
-  // Manual 1-click convert helper
-  const handleManualConvert = async (value, setter) => {
-    if (value && /[a-zA-Z]/.test(value)) {
       const converted = await transliterateFullText(value);
       setter(converted);
     }
@@ -183,141 +167,35 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
           {/* Left Controls Panel */}
           <div className="lg:col-span-6 bg-white rounded-3xl p-6 sm:p-7 shadow-xl border border-brand-cream-300 space-y-4.5">
             
-            {/* Selected Design Indicator & Quick Switcher */}
-            <div className="bg-brand-purple-50/60 rounded-2xl p-4 border border-brand-purple-200">
-              <div className="flex items-center justify-between mb-2.5">
-                <span className="text-xs font-bold text-brand-purple-950 flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-brand-gold-600" />
-                  <span>चयनित डिजाइन (Selected Design):</span>
-                </span>
-                <span className={`text-xs font-black px-2.5 py-0.5 rounded-full border ${
-                  currentDesign?.designType === 'islamic' || currentDesign?.categoryId === 'islamic-design'
-                    ? 'text-emerald-950 bg-emerald-300/40 border-emerald-400'
-                    : 'text-brand-purple-900 bg-brand-gold-400/30 border-brand-gold-400'
-                }`}>
-                  {currentDesign?.designType === 'islamic' ? '🌙 ' : '🕉️ '}
-                  {currentDesign?.name || 'मोर फूल तबला'}
-                </span>
-              </div>
-
-              {/* Ceremony Category Switcher Pills */}
-              <div className="flex items-center gap-1 mb-2 pb-1 border-b border-brand-purple-200/60">
-                <button
-                  type="button"
-                  onClick={() => setActiveCategoryFilter('all')}
-                  className={`text-[11px] font-bold px-2 py-0.5 rounded-lg transition-all ${
-                    activeCategoryFilter === 'all'
-                      ? 'bg-brand-purple-900 text-white shadow-2xs'
-                      : 'bg-white text-slate-600 hover:text-slate-900'
-                  }`}
-                >
-                  सभी ({allStageDesigns.length})
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveCategoryFilter('islamic')}
-                  className={`text-[11px] font-bold px-2 py-0.5 rounded-lg transition-all flex items-center gap-1 ${
-                    activeCategoryFilter === 'islamic'
-                      ? 'bg-emerald-700 text-white shadow-2xs'
-                      : 'bg-white text-emerald-800 hover:bg-emerald-50'
-                  }`}
-                >
-                  <span>🌙 इस्लामिक निकाह ({allStageDesigns.filter(d => d.designType === 'islamic' || d.categoryId === 'islamic-design').length})</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setActiveCategoryFilter('hindu')}
-                  className={`text-[11px] font-bold px-2 py-0.5 rounded-lg transition-all flex items-center gap-1 ${
-                    activeCategoryFilter === 'hindu'
-                      ? 'bg-amber-600 text-white shadow-2xs'
-                      : 'bg-white text-amber-800 hover:bg-amber-50'
-                  }`}
-                >
-                  <span>🕉️ हिन्दू विवाह ({allStageDesigns.filter(d => d.designType === 'hindu' || d.categoryId === 'hindu-design').length})</span>
-                </button>
-              </div>
-
-              {/* Quick Design Switcher Badges */}
-              <div className="flex flex-wrap gap-1.5 pt-0.5 max-h-36 overflow-y-auto pr-1">
-                {filteredDesigns.map((d) => {
-                  const isSelected = currentDesign?.id === d.id || currentDesign?.name === d.name;
-                  const isIslamic = d.designType === 'islamic' || d.categoryId === 'islamic-design';
-                  return (
-                    <button
-                      key={d.id}
-                      type="button"
-                      onClick={() => handleDesignChange(d)}
-                      className={`text-xs font-semibold px-2.5 py-1 rounded-xl transition-all cursor-pointer flex items-center gap-1 border ${
-                        isSelected
-                          ? isIslamic
-                            ? 'bg-emerald-700 text-white border-emerald-700 shadow-xs ring-1 ring-emerald-300'
-                            : 'bg-brand-purple-900 text-white border-brand-purple-900 shadow-xs ring-1 ring-brand-gold-400'
-                          : isIslamic
-                            ? 'bg-emerald-50/70 hover:bg-emerald-100/80 text-emerald-950 border-emerald-200'
-                            : 'bg-white hover:bg-brand-purple-100/60 text-slate-700 border-slate-200'
-                      }`}
-                    >
-                      <span>{isIslamic ? '🌙' : '🕉️'}</span>
-                      <span className="truncate max-w-[150px]">{d.name}</span>
-                      {isSelected && <span className="text-[10px]">✓</span>}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Language Selection Switcher with Live English-to-Hindi Auto Typing */}
-            <div className="p-3.5 rounded-2xl bg-gradient-to-r from-brand-purple-50 via-white to-amber-50/60 border border-brand-purple-200/90 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-xl bg-brand-purple-900 text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <Languages className="w-4 h-4 text-brand-gold-300" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-slate-800">
-                      बोर्ड पर लिखने की भाषा (Writing Language)
-                    </span>
-                    <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full border ${
-                      inputLang === 'hi' 
-                        ? 'bg-amber-100 text-amber-900 border-amber-300' 
-                        : 'bg-blue-100 text-blue-900 border-blue-300'
-                    }`}>
-                      {inputLang === 'hi' ? 'ऑटो हिंदी सक्रिय ✍️' : 'English Mode 🔤'}
-                    </span>
-                  </div>
-                  <span className="text-[11px] text-slate-500 block leading-tight mt-0.5">
-                    {inputLang === 'hi'
-                      ? 'English में लिखने पर (उदा. vikas -> विकास) स्पेस दबाते ही अपने आप हिंदी में लिखा जाएगा।'
-                      : 'Names & locations will stay in direct English letters.'}
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1.5 bg-brand-cream-100 p-1 rounded-xl border border-brand-cream-300 shrink-0 self-start sm:self-auto">
-                <button
-                  type="button"
-                  onClick={() => handleLanguageSwitch('hi')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                    inputLang === 'hi'
-                      ? 'bg-brand-purple-900 text-white shadow-sm ring-1 ring-brand-gold-400'
-                      : 'text-slate-700 hover:text-brand-purple-900 hover:bg-white/80'
-                  }`}
-                >
-                  <span>🇮🇳</span>
+            {/* Language Selection Radio Buttons */}
+            <div className="flex items-center justify-between p-3.5 rounded-2xl bg-brand-cream-100/70 border border-brand-cream-300">
+              <span className="text-xs font-bold text-slate-800">
+                भाषा (Language):
+              </span>
+              <div className="flex items-center gap-5">
+                <label className="inline-flex items-center gap-2 cursor-pointer text-xs font-bold text-slate-800 hover:text-brand-purple-900 select-none">
+                  <input
+                    type="radio"
+                    name="writingLanguage"
+                    value="hi"
+                    checked={inputLang === 'hi'}
+                    onChange={() => handleLanguageSwitch('hi')}
+                    className="w-4 h-4 text-brand-purple-900 accent-brand-purple-900 cursor-pointer"
+                  />
                   <span>हिंदी (Hindi)</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleLanguageSwitch('en')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
-                    inputLang === 'en'
-                      ? 'bg-brand-purple-900 text-white shadow-sm ring-1 ring-brand-gold-400'
-                      : 'text-slate-700 hover:text-brand-purple-900 hover:bg-white/80'
-                  }`}
-                >
-                  <span>🇬🇧</span>
+                </label>
+
+                <label className="inline-flex items-center gap-2 cursor-pointer text-xs font-bold text-slate-800 hover:text-brand-purple-900 select-none">
+                  <input
+                    type="radio"
+                    name="writingLanguage"
+                    value="en"
+                    checked={inputLang === 'en'}
+                    onChange={() => handleLanguageSwitch('en')}
+                    className="w-4 h-4 text-brand-purple-900 accent-brand-purple-900 cursor-pointer"
+                  />
                   <span>English</span>
-                </button>
+                </label>
               </div>
             </div>
 
@@ -331,21 +209,9 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
             {/* 1. Groom & Bride Names */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <div className="flex items-center justify-between mb-1">
-                  <label className="text-xs font-bold text-slate-700">
-                    {inputLang === 'hi' ? 'दूल्हे का नाम (Groom Name) *' : 'Groom Name *'}
-                  </label>
-                  {inputLang === 'hi' && groomName && /[a-zA-Z]/.test(groomName) && (
-                    <button
-                      type="button"
-                      onClick={() => handleManualConvert(groomName, setGroomName)}
-                      className="text-[10px] text-brand-purple-900 font-bold bg-purple-100 hover:bg-purple-200 px-1.5 py-0.2 rounded transition-colors"
-                      title="हिंदी में बदलें"
-                    >
-                      ✍️ हिंदी करें
-                    </button>
-                  )}
-                </div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  {inputLang === 'hi' ? 'दूल्हे का नाम (Groom Name) *' : 'Groom Name *'}
+                </label>
                 <input
                   type="text"
                   value={groomName}
@@ -356,21 +222,9 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
               </div>
 
               <div>
-                <div className="flex items-center justify-between mb-1">
-                  <label className="text-xs font-bold text-slate-700">
-                    {inputLang === 'hi' ? 'दुल्हन का नाम (Bride Name) *' : 'Bride Name *'}
-                  </label>
-                  {inputLang === 'hi' && brideName && /[a-zA-Z]/.test(brideName) && (
-                    <button
-                      type="button"
-                      onClick={() => handleManualConvert(brideName, setBrideName)}
-                      className="text-[10px] text-brand-purple-900 font-bold bg-purple-100 hover:bg-purple-200 px-1.5 py-0.2 rounded transition-colors"
-                      title="हिंदी में बदलें"
-                    >
-                      ✍️ हिंदी करें
-                    </button>
-                  )}
-                </div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  {inputLang === 'hi' ? 'दुल्हन का नाम (Bride Name) *' : 'Bride Name *'}
+                </label>
                 <input
                   type="text"
                   value={brideName}
@@ -384,22 +238,10 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
             {/* 2. Barat From & Barat To */}
             <div className="space-y-3">
               <div>
-                <div className="flex items-center justify-between mb-1">
-                  <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>{inputLang === 'hi' ? 'बारात कहाँ से (Barat From) *' : 'Barat From (Origin) *'}</span>
-                  </label>
-                  {inputLang === 'hi' && baratFrom && /[a-zA-Z]/.test(baratFrom) && (
-                    <button
-                      type="button"
-                      onClick={() => handleManualConvert(baratFrom, setBaratFrom)}
-                      className="text-[10px] text-brand-purple-900 font-bold bg-purple-100 hover:bg-purple-200 px-1.5 py-0.2 rounded transition-colors"
-                      title="हिंदी में बदलें"
-                    >
-                      ✍️ हिंदी करें
-                    </button>
-                  )}
-                </div>
+                <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>{inputLang === 'hi' ? 'बारात कहाँ से (Barat From) *' : 'Barat From (Origin) *'}</span>
+                </label>
                 <input
                   type="text"
                   value={baratFrom}
@@ -410,22 +252,10 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
               </div>
 
               <div>
-                <div className="flex items-center justify-between mb-1">
-                  <label className="text-xs font-bold text-slate-700 flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-brand-rose-600" />
-                    <span>{inputLang === 'hi' ? 'बारात कहाँ तक / स्थल (Barat To) *' : 'Barat To (Venue) *'}</span>
-                  </label>
-                  {inputLang === 'hi' && baratTo && /[a-zA-Z]/.test(baratTo) && (
-                    <button
-                      type="button"
-                      onClick={() => handleManualConvert(baratTo, setBaratTo)}
-                      className="text-[10px] text-brand-purple-900 font-bold bg-purple-100 hover:bg-purple-200 px-1.5 py-0.2 rounded transition-colors"
-                      title="हिंदी में बदलें"
-                    >
-                      ✍️ हिंदी करें
-                    </button>
-                  )}
-                </div>
+                <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-brand-rose-600" />
+                  <span>{inputLang === 'hi' ? 'बारात कहाँ तक / स्थल (Barat To) *' : 'Barat To (Venue) *'}</span>
+                </label>
                 <input
                   type="text"
                   value={baratTo}
