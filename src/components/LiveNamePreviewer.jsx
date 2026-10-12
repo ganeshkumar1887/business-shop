@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, MapPin, Calendar, Heart, Wand2, ArrowRight, Truck, CheckCircle2 } from 'lucide-react';
+import { MessageCircle, MapPin, Calendar, Heart, Wand2, ArrowRight, Truck, CheckCircle2, Layers } from 'lucide-react';
 import { getLiveCustomizerUrl } from '../utils/whatsapp';
 import { PRODUCTS } from '../data/products';
 import { smallBoardDulhanImg } from '../data/images';
@@ -435,128 +435,198 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
 
           </div>
 
-          {/* Right Live Simulation Board Visual */}
+          {/* Right Live Simulation Board Visual - Professional Attractive 3D Wedding Board */}
           <div className="lg:col-span-6 sticky top-24">
-            <div className="relative rounded-3xl p-6 sm:p-8 bg-gradient-to-tr from-slate-950 via-brand-purple-950 to-slate-900 shadow-2xl border-2 border-brand-gold-500/40 overflow-hidden flex flex-col items-center justify-center text-center">
+            <div className="relative rounded-3xl p-5 sm:p-7 bg-gradient-to-b from-slate-950 via-brand-purple-950 to-slate-950 shadow-2xl border-2 border-brand-gold-500/40 overflow-hidden flex flex-col justify-between">
               
-              {/* Background ambient gold lights */}
-              <div className="absolute inset-0 bg-radial from-amber-400/20 via-transparent to-transparent pointer-events-none"></div>
-              
-              {/* Top Header with Selected Design & Price Tag */}
-              <div className="relative z-10 mb-4 flex flex-wrap items-center justify-center gap-2">
-                <span className="text-brand-gold-300 font-cinzel tracking-[0.2em] uppercase text-xs font-bold bg-white/10 px-3.5 py-1.5 rounded-full border border-brand-gold-400/30 backdrop-blur-md flex items-center gap-1.5">
-                  <span>✨</span>
-                  <span>{currentDesign?.name || 'मोर फूल तबला'}</span>
-                </span>
+              {/* Background ambient spotlight & glowing lights */}
+              <div className="absolute top-0 inset-x-0 h-48 bg-gradient-to-b from-amber-400/15 via-brand-purple-500/10 to-transparent pointer-events-none"></div>
+              <div className="absolute -top-10 -right-10 w-64 h-64 bg-brand-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-brand-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
-                <span className="bg-emerald-500/20 text-emerald-300 text-xs font-black px-3.5 py-1.5 rounded-full border border-emerald-400/40 backdrop-blur-md">
-                  कुल मूल्य: ₹{totalPrice}
-                </span>
+              {/* Top Header Bar */}
+              <div className="relative z-10 mb-4 flex items-center justify-between gap-2 border-b border-white/10 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="text-brand-gold-300 text-xs sm:text-sm font-bold uppercase tracking-wider flex items-center gap-1.5 font-cinzel">
+                    <span>✨</span>
+                    <span>लाइव 3D स्टेज बोर्ड प्रिव्यू</span>
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <span className="bg-white/10 text-brand-cream-200 text-[11px] font-semibold px-2.5 py-1 rounded-full border border-white/15">
+                    {currentDesign?.name || 'मोर फूल तबला'}
+                  </span>
+                  <span className="bg-emerald-500/25 text-emerald-300 text-xs font-black px-3 py-1 rounded-full border border-emerald-400/40 shadow-xs">
+                    ₹{totalPrice}
+                  </span>
+                </div>
               </div>
 
-              {/* Design Image Thumbnail Preview - Increased Width & Size */}
-              {currentDesign?.image && (
-                <div className="relative z-10 mb-4 w-full max-w-sm sm:max-w-md h-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-brand-gold-400/60 shadow-2xl bg-black/40 backdrop-blur-md p-2 flex items-center justify-center">
-                  <img
-                    src={currentDesign.image}
-                    alt={currentDesign.name}
-                    className="w-full h-full object-contain rounded-xl drop-shadow-lg transition-transform duration-300 hover:scale-105"
-                  />
-                  <div className="absolute bottom-2 inset-x-3 bg-black/80 backdrop-blur-md text-xs sm:text-sm text-brand-gold-300 font-bold py-1 px-3 rounded-xl text-center border border-brand-gold-400/30 shadow-md">
-                    {currentDesign.name}
-                  </div>
-                </div>
-              )}
-
-              {/* Main Simulated 3D Thermocol Board Container */}
-              <div className="relative z-10 p-5 sm:p-6 rounded-3xl max-w-lg w-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
+              {/* THE GRAND 3D STAGE BOARD (Unified Realistic Thermocol Masterpiece) */}
+              <div className="relative z-10 w-full rounded-3xl p-5 sm:p-7 md:p-8 bg-gradient-to-b from-[#FFFDF7] via-[#FFF9ED] to-[#FAF1DE] border-4 border-amber-400/90 shadow-[0_20px_50px_rgba(0,0,0,0.6)] text-center overflow-hidden my-2">
                 
-                {/* 3D Cutout Names */}
-                <div className="py-3 px-1">
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
-                    <span className="font-serif font-bold text-2xl sm:text-3xl text-amber-900 thermocol-glitter-gold px-3.5 py-1.5 rounded-xl thermocol-cutout-preview border border-amber-400 inline-block shadow-lg">
-                      {groomName || (inputLang === 'hi' ? 'दूल्हा' : 'Groom Name')}
-                    </span>
-                    
-                    <span className="text-lg sm:text-xl font-serif font-black text-brand-gold-300 px-1 animate-pulse">
-                      {inputLang === 'en' ? 'WEDS' : currentDesign?.designType === 'islamic' ? 'WEDS' : 'संग'}
-                    </span>
+                {/* Board Embossed Decorative Gold Filigree Borders & Corner Motifs */}
+                <div className="absolute inset-1.5 rounded-2xl border-2 border-dashed border-amber-500/40 pointer-events-none"></div>
+                <div className="absolute top-2 left-2 text-amber-500/60 text-lg sm:text-xl">🪷</div>
+                <div className="absolute top-2 right-2 text-amber-500/60 text-lg sm:text-xl">🪷</div>
+                <div className="absolute bottom-2 left-2 text-amber-500/60 text-lg sm:text-xl">🪷</div>
+                <div className="absolute bottom-2 right-2 text-amber-500/60 text-lg sm:text-xl">🪷</div>
 
-                    <span className="font-serif font-bold text-2xl sm:text-3xl text-amber-900 thermocol-glitter-gold px-3.5 py-1.5 rounded-xl thermocol-cutout-preview border border-amber-400 inline-block shadow-lg">
-                      {brideName || (inputLang === 'hi' ? 'दुल्हन' : 'Bride Name')}
-                    </span>
+                {/* Top Auspicious Header Motif Badge */}
+                <div className="relative mb-4 sm:mb-5">
+                  <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-amber-600 via-brand-rose-600 to-amber-600 text-white text-xs sm:text-sm font-bold tracking-wide shadow-md border border-amber-300">
+                    {currentDesign?.designType === 'islamic' || currentDesign?.categoryId === 'islamic-design' ? (
+                      <>
+                        <span>🌙</span>
+                        <span>निकाह मुबारक व वलीमा स्टेज</span>
+                        <span>🌙</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>🕉️</span>
+                        <span>शुभ विवाह • मंडप स्टेज</span>
+                        <span>🕉️</span>
+                      </>
+                    )}
+                  </span>
+                </div>
+
+                {/* Main 3D Cutout Couple Names Display */}
+                <div className="relative py-2 sm:py-3">
+                  <div className="flex flex-col items-center justify-center gap-2 sm:gap-2.5">
+                    
+                    {/* Groom Name in Grand 3D Glitter Font */}
+                    <div className="relative inline-block my-1">
+                      <div className="relative px-6 py-2 rounded-2xl bg-gradient-to-r from-amber-500/20 via-rose-500/15 to-amber-500/20 border-2 border-amber-400/70 shadow-[0_6px_20px_rgba(217,119,6,0.3)]">
+                        <span 
+                          className="font-serif font-black text-2xl sm:text-3xl md:text-4xl tracking-tight text-red-600 block drop-shadow-[0_2px_2px_rgba(255,255,255,1)]"
+                          style={{
+                            textShadow: '2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 0 4px 10px rgba(185, 28, 28, 0.45)'
+                          }}
+                        >
+                          {groomName || (inputLang === 'hi' ? 'दूल्हा' : 'Groom')}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Auspicious Connector Badge (संग / WEDS) */}
+                    <div className="my-1">
+                      <span className="inline-flex items-center justify-center px-4 py-1 rounded-full bg-gradient-to-r from-amber-500 via-rose-600 to-amber-500 text-white font-serif font-black text-xs sm:text-sm shadow-md border-2 border-white tracking-widest">
+                        {inputLang === 'en' ? 'WEDS' : currentDesign?.designType === 'islamic' ? 'WEDS' : 'संग'}
+                      </span>
+                    </div>
+
+                    {/* Bride Name in Grand 3D Glitter Font */}
+                    <div className="relative inline-block my-1">
+                      <div className="relative px-6 py-2 rounded-2xl bg-gradient-to-r from-amber-500/20 via-rose-500/15 to-amber-500/20 border-2 border-amber-400/70 shadow-[0_6px_20px_rgba(217,119,6,0.3)]">
+                        <span 
+                          className="font-serif font-black text-2xl sm:text-3xl md:text-4xl tracking-tight text-rose-600 block drop-shadow-[0_2px_2px_rgba(255,255,255,1)]"
+                          style={{
+                            textShadow: '2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 0 4px 10px rgba(225, 29, 72, 0.45)'
+                          }}
+                        >
+                          {brideName || (inputLang === 'hi' ? 'दुल्हन' : 'Bride')}
+                        </span>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
 
-                {/* Barat Route and Date Display */}
-                <div className="mt-3 pt-3 border-t border-white/15 space-y-2">
-                  {(baratFrom || baratTo) && (
-                    <div className="inline-flex items-center gap-1.5 bg-black/40 text-brand-cream-100 text-xs sm:text-sm font-medium px-4 py-1 rounded-full border border-white/10">
-                      <MapPin className="w-3.5 h-3.5 text-emerald-400" />
+                {/* Barat Route Ribbon */}
+                {(baratFrom || baratTo) ? (
+                  <div className="mt-4 pt-3 border-t border-amber-300/60">
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-100 via-white to-amber-100 text-slate-800 text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full border border-amber-300 shadow-2xs">
+                      <MapPin className="w-3.5 h-3.5 text-brand-rose-600 shrink-0" />
                       <span>
                         {inputLang === 'hi'
-                          ? `${baratFrom || 'स्थान'} से ${baratTo || 'गंतव्य'}`
-                          : `${baratFrom || 'Origin'} to ${baratTo || 'Venue'}`
+                          ? `बारात: ${baratFrom || 'स्थान'} से ${baratTo || 'गंतव्य'}`
+                          : `Barat: ${baratFrom || 'Origin'} to ${baratTo || 'Venue'}`
                         }
                       </span>
                     </div>
-                  )}
+                  </div>
+                ) : (
+                  <div className="mt-3 pt-2.5 border-t border-amber-300/40">
+                    <span className="text-[11px] font-semibold text-amber-800/80">
+                      {inputLang === 'hi' ? 'बारात स्थल व तिथि विवरण' : 'Barat Route & Wedding Details'}
+                    </span>
+                  </div>
+                )}
 
-                  <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+                {/* Wedding Date & Delivery Date Badges */}
+                {(eventDate || deliveryDate) && (
+                  <div className="flex flex-wrap items-center justify-center gap-2 mt-2 pt-1">
                     {eventDate && (
-                      <span className="inline-flex items-center gap-1 bg-brand-purple-900/60 text-brand-gold-300 text-xs font-bold px-3 py-0.5 rounded-full border border-brand-gold-400/30">
-                        <Calendar className="w-3 h-3 text-brand-gold-400" />
+                      <span className="inline-flex items-center gap-1 bg-amber-600/15 text-amber-950 text-xs font-bold px-3 py-1 rounded-full border border-amber-400/40">
+                        <Calendar className="w-3 h-3 text-amber-700" />
                         <span>{inputLang === 'hi' ? 'शादी:' : 'Date:'} {eventDate}</span>
                       </span>
                     )}
-
                     {deliveryDate && (
-                      <span className="inline-flex items-center gap-1 bg-emerald-900/60 text-emerald-300 text-xs font-bold px-3 py-0.5 rounded-full border border-emerald-400/30">
-                        <Truck className="w-3 h-3 text-emerald-400" />
+                      <span className="inline-flex items-center gap-1 bg-emerald-600/15 text-emerald-950 text-xs font-bold px-3 py-1 rounded-full border border-emerald-400/40">
+                        <Truck className="w-3 h-3 text-emerald-700" />
                         <span>{inputLang === 'hi' ? 'डिलीवरी:' : 'Delivery:'} {deliveryDate}</span>
                       </span>
                     )}
                   </div>
+                )}
 
-                  {/* Small Board Indicator & Miniature Preview */}
-                  {includeSmallBoard && (
-                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
-                      <div className="inline-flex items-center gap-2 p-1.5 px-3 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-200 text-xs font-bold">
-                        <div className="w-8 h-8 rounded-lg overflow-hidden border border-amber-300 shrink-0 bg-white/20">
-                          <img
-                            src={smallBoardDulhanImg}
-                            alt="दुल्हन हम ले जायेंगे"
-                            className="w-full h-full object-contain"
-                          />
+                {/* Attached Small Board Preview Badge */}
+                {includeSmallBoard && (
+                  <div className="mt-4 pt-3 border-t border-amber-300/60 flex items-center justify-center">
+                    <div className="inline-flex items-center gap-2.5 p-2 px-3 rounded-2xl bg-gradient-to-r from-rose-100 via-amber-50 to-rose-100 border-2 border-rose-400 shadow-sm text-left">
+                      <div className="w-10 h-10 rounded-xl overflow-hidden border border-rose-300 shrink-0 bg-white shadow-xs">
+                        <img
+                          src={smallBoardDulhanImg}
+                          alt="दुल्हन हम ले जायेंगे"
+                          className="w-full h-full object-contain p-0.5"
+                        />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1 text-xs font-black text-rose-950">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                          <span>छोटा बोर्ड शामिल (+₹50)</span>
                         </div>
-                        <div className="text-left">
-                          <div className="flex items-center gap-1">
-                            <CheckCircle2 className="w-3 h-3 text-amber-300" />
-                            <span>छोटा बोर्ड शामिल (+₹50)</span>
-                          </div>
-                          <span className="text-[10px] text-brand-cream-300 font-normal">
-                            'दुल्हन हम ले जायेंगे' 3D कटआउट
-                          </span>
-                        </div>
+                        <span className="text-[10px] text-rose-800 font-semibold block">
+                          'दुल्हन हम ले जायेंगे' 3D कार व गेट कटआउट
+                        </span>
                       </div>
                     </div>
-                  )}
+                  </div>
+                )}
+
+                {/* Subtitle Guarantee Tag */}
+                <div className="mt-4 pt-2 border-t border-amber-200/80 flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-amber-900/80">
+                  <span>📐 साइज: 4 × 2.5 फीट स्टेज बोर्ड</span>
+                  <span>💎 3D थर्मोकोल ग्लिटर फिनिश</span>
                 </div>
 
-                {/* Subtitle */}
-                <div className="mt-3 text-brand-cream-200/80 text-[10px] font-sans tracking-wider uppercase">
-                  <span>हैंडक्राफ्टेड 3D थर्मोकोल कटआउट • हाई डेंसिटी व ग्लिटर फिनिश</span>
-                </div>
+              </div>
+
+              {/* Quality & Service Trust Highlights */}
+              <div className="relative z-10 flex flex-wrap items-center justify-center gap-2 py-2 text-[11px] text-brand-cream-200">
+                <span className="inline-flex items-center gap-1 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10">
+                  ⭐ 100% कस्टमाइज़्ड
+                </span>
+                <span className="inline-flex items-center gap-1 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10">
+                  💧 वॉटरप्रूफ फिनिश
+                </span>
+                <span className="inline-flex items-center gap-1 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10">
+                  📦 सुरक्षित डिलीवरी
+                </span>
               </div>
 
               {/* Order on WhatsApp CTA directly from preview */}
-              <div className="relative z-10 mt-5 w-full max-w-md">
+              <div className="relative z-10 mt-2 w-full">
                 <button
                   onClick={handleOrderCustomizer}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-bold py-3.5 px-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all text-sm sm:text-base cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 via-emerald-700 to-emerald-800 hover:from-emerald-700 hover:to-emerald-900 text-white font-bold py-3.5 px-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-[1.01] transition-all text-sm sm:text-base cursor-pointer border border-emerald-400/40"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  <span>WhatsApp पर ₹{totalPrice} में ऑर्डर करें</span>
+                  <MessageCircle className="w-5 h-5 text-emerald-200" />
+                  <span>यह ₹{totalPrice} वाला बोर्ड WhatsApp पर ऑर्डर करें</span>
                 </button>
               </div>
 

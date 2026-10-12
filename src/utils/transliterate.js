@@ -107,7 +107,6 @@ export const COMMON_HINDI_WORDS = {
   'pradeep': 'प्रदीप',
   'prakash': 'प्रकाश',
   'prashant': 'प्रशांत',
-  'praveen:': 'प्रवीण',
   'praveen': 'प्रवीण',
   'raj': 'राज',
   'raja': 'राजा',
