@@ -12,11 +12,12 @@ import {
   Play,
   Pause,
   Heart,
-  Star
+  Star,
+  Moon
 } from 'lucide-react';
 import { SHOP_CONFIG } from '../data/config';
 import { HERO_SLIDES, weddingCoupleImg, logoImg } from '../data/images';
-import { getGeneralInquiryUrl } from '../utils/whatsapp';
+import { getGeneralInquiryUrl, getWhatsAppUrl } from '../utils/whatsapp';
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -145,7 +146,7 @@ export default function Hero() {
           {/* Centerpiece Image Showcase Slider (Wider max-w-6xl with Perfect Fitting) */}
           <div className="w-full max-w-5xl lg:max-w-6xl relative rounded-2xl sm:rounded-3xl p-1.5 sm:p-2.5 bg-gradient-to-tr from-brand-gold-400 via-brand-purple-400 to-brand-rose-400 shadow-[0_20px_60px_-15px_rgba(107,33,168,0.25),0_0_25px_rgba(234,179,8,0.2)]">
             
-            <div className="relative h-[320px] sm:h-[400px] md:h-[460px] lg:h-[500px] w-full bg-gradient-to-b from-slate-950 via-brand-purple-950 to-slate-950 rounded-xl sm:rounded-[22px] flex items-center justify-center overflow-hidden">
+            <div className="relative h-[340px] sm:h-[420px] md:h-[480px] lg:h-[520px] w-full bg-gradient-to-b from-slate-950 via-brand-purple-950 to-slate-950 rounded-xl sm:rounded-[22px] flex items-center justify-center overflow-hidden">
               
               {/* Background Slide Images */}
               {HERO_SLIDES.map((slide, index) => {
@@ -159,8 +160,8 @@ export default function Hero() {
                   >
                     <img
                       src={slide.image}
-                      alt={slide.title}
-                      className="max-h-full max-w-full w-auto h-auto object-contain rounded-xl sm:rounded-2xl drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                      alt={`${slide.hindiTitle} - ${slide.title}`}
+                      className="max-h-[75%] sm:max-h-[82%] max-w-full w-auto h-auto object-contain rounded-xl sm:rounded-2xl drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
                       loading={index === 0 ? 'eager' : 'lazy'}
                     />
                   </div>
@@ -171,7 +172,7 @@ export default function Hero() {
               <button
                 onClick={handlePrev}
                 aria-label="Previous Slide"
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur-md border border-white/30 transition-all hover:scale-110 shadow-lg"
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/30 transition-all hover:scale-110 shadow-lg cursor-pointer"
               >
                 <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
@@ -179,26 +180,84 @@ export default function Hero() {
               <button
                 onClick={handleNext}
                 aria-label="Next Slide"
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur-md border border-white/30 transition-all hover:scale-110 shadow-lg"
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-md border border-white/30 transition-all hover:scale-110 shadow-lg cursor-pointer"
               >
                 <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
               {/* Slide Title Tag (Top Left Floating) */}
-              <div className="absolute top-3 left-3 right-3 sm:right-auto z-20">
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-black/70 backdrop-blur-md text-white border border-brand-gold-400/50 text-xs sm:text-sm font-semibold shadow-lg">
-                  <Crown className="w-4 h-4 text-brand-gold-400" />
-                  <span className="text-brand-gold-300 font-bold">{activeSlideData.title}</span>
-                  <span className="hidden sm:inline text-brand-cream-300">({activeSlideData.hindiTitle})</span>
+              <div className="absolute top-2.5 sm:top-3.5 left-2.5 sm:left-4 z-20 max-w-[70%] sm:max-w-md">
+                <div className={`inline-flex flex-col gap-0.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl backdrop-blur-md text-white shadow-xl border ${
+                  activeSlideData.category === 'islamic'
+                    ? 'bg-emerald-950/80 border-emerald-400/60 ring-1 ring-emerald-400/30'
+                    : 'bg-black/75 border-brand-gold-400/60 ring-1 ring-brand-gold-400/30'
+                }`}>
+                  <div className="flex items-center gap-1.5">
+                    {activeSlideData.category === 'islamic' ? (
+                      <Moon className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400 shrink-0" />
+                    ) : (
+                      <Crown className="w-3.5 h-3.5 text-brand-gold-400 shrink-0" />
+                    )}
+                    <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-wider ${
+                      activeSlideData.category === 'islamic' ? 'text-emerald-300' : 'text-brand-gold-400'
+                    }`}>
+                      {activeSlideData.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-serif font-black text-xs sm:text-base text-white tracking-wide leading-tight">
+                    {activeSlideData.hindiTitle}
+                  </h3>
+                  <span className="text-[10px] sm:text-xs text-brand-cream-300/90 font-medium truncate">
+                    {activeSlideData.title}
+                  </span>
+                </div>
+              </div>
+
+              {/* Slide Counter (Top Right Floating) */}
+              <div className="absolute top-2.5 sm:top-3.5 right-2.5 sm:right-4 z-20">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] sm:text-xs font-bold shadow-md">
+                  <Sparkles className="w-3 h-3 text-brand-gold-400" />
+                  <span>{currentSlide + 1} / {HERO_SLIDES.length}</span>
+                </span>
+              </div>
+
+              {/* Slide Subtitle & Details Floating Card (Bottom Overlay) */}
+              <div className="absolute bottom-12 sm:bottom-14 left-3 right-3 sm:left-6 sm:right-6 z-20 flex justify-center pointer-events-none">
+                <div className="pointer-events-auto max-w-xl w-full bg-black/75 backdrop-blur-md rounded-xl sm:rounded-2xl p-2 sm:p-2.5 border border-white/20 shadow-2xl flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+                  <div className="flex-1 min-w-0 px-1">
+                    <p className="text-white text-[11px] sm:text-xs font-semibold leading-snug line-clamp-1">
+                      {activeSlideData.subtitle}
+                    </p>
+                    <p className="text-brand-cream-300/80 text-[10px] sm:text-[11px] font-normal truncate mt-0.5">
+                      {activeSlideData.details}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <a
+                      href={getWhatsAppUrl(`नमस्ते श्री भगवान! मुझे यह स्टेज बोर्ड डिजाइन बहुत पसंद आया है:\n\n*${activeSlideData.hindiTitle}* (${activeSlideData.title})\nकैटेगरी: ${activeSlideData.tag}\n\nकृपया इस डिजाइन में दूल्हा-दुल्हन का नाम लिखवाने का फाइनल रेट और डिलीवरी समय बताएं। धन्यवाद!`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm transition-all"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5" />
+                      <span>WhatsApp Order</span>
+                    </a>
+                    <Link
+                      to={`/marriage-designs?type=${activeSlideData.category}`}
+                      className="inline-flex items-center gap-1 bg-white/20 hover:bg-white/30 text-white text-[10px] sm:text-xs font-bold px-2.5 py-1.5 rounded-lg transition-all"
+                    >
+                      <span>All Designs</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
 
               {/* Slider Bottom Controls Bar (Play/Pause + Dots) */}
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 p-1.5 px-3 rounded-full bg-black/70 backdrop-blur-md border border-white/30 shadow-lg">
+              <div className="absolute bottom-2.5 sm:bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 p-1 sm:p-1.5 px-3 rounded-full bg-black/75 backdrop-blur-md border border-white/30 shadow-lg">
                 <button
                   onClick={() => setIsAutoPlaying(!isAutoPlaying)}
                   aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
-                  className="text-brand-gold-300 hover:text-white transition-colors"
+                  className="text-brand-gold-300 hover:text-white transition-colors cursor-pointer"
                 >
                   {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
                 </button>
@@ -208,7 +267,7 @@ export default function Hero() {
                     <button
                       key={slide.id}
                       onClick={() => setCurrentSlide(idx)}
-                      className={`transition-all duration-300 rounded-full ${
+                      className={`transition-all duration-300 rounded-full cursor-pointer ${
                         idx === currentSlide 
                           ? 'w-6 h-2 bg-brand-gold-400 shadow-glow-gold' 
                           : 'w-2 h-2 bg-white/50 hover:bg-white'
@@ -219,6 +278,33 @@ export default function Hero() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Quick Design Switcher Tabs with Design Names (Shows All Islamic + Hindu Designs) */}
+            <div className="mt-2 pt-2 px-1 flex items-center justify-start sm:justify-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+              <span className="hidden md:inline text-[10px] font-bold text-slate-800 uppercase tracking-wider shrink-0 bg-white/70 px-2 py-0.5 rounded-md">
+                Quick Select:
+              </span>
+              {HERO_SLIDES.map((slide, idx) => {
+                const isSelected = idx === currentSlide;
+                const isIslamic = slide.category === 'islamic';
+                return (
+                  <button
+                    key={slide.id}
+                    onClick={() => setCurrentSlide(idx)}
+                    className={`shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] sm:text-xs font-bold transition-all cursor-pointer ${
+                      isSelected
+                        ? isIslamic
+                          ? 'bg-emerald-700 text-white shadow-md ring-2 ring-emerald-300 scale-105'
+                          : 'bg-brand-purple-900 text-brand-gold-300 shadow-md ring-2 ring-brand-gold-400 scale-105'
+                        : 'bg-white/80 hover:bg-white text-slate-800 hover:text-brand-purple-950 border border-brand-gold-400/40 shadow-2xs'
+                    }`}
+                  >
+                    <span>{isIslamic ? '🌙' : '🕉️'}</span>
+                    <span className="truncate max-w-[120px] sm:max-w-[170px]">{slide.hindiTitle}</span>
+                  </button>
+                );
+              })}
             </div>
 
           </div>

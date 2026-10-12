@@ -4,11 +4,25 @@ import { getLiveCustomizerUrl } from '../utils/whatsapp';
 import { PRODUCTS } from '../data/products';
 
 export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
-  // Available Hindu wedding stage designs
-  const hinduDesigns = PRODUCTS.filter(p => p.categoryId === 'hindu-design' || p.tags?.includes('hindu-stage-board'));
+  // Available wedding stage designs (Hindu + Islamic)
+  const allStageDesigns = PRODUCTS.filter(
+    p => p.categoryId === 'hindu-design' || 
+         p.categoryId === 'islamic-design' || 
+         p.designType === 'islamic' || 
+         p.designType === 'hindu' ||
+         p.tags?.includes('hindu-stage-board')
+  );
+
+  const [activeCategoryFilter, setActiveCategoryFilter] = useState('all'); // 'all', 'islamic', 'hindu'
+
+  const filteredDesigns = allStageDesigns.filter(d => {
+    if (activeCategoryFilter === 'islamic') return d.designType === 'islamic' || d.categoryId === 'islamic-design';
+    if (activeCategoryFilter === 'hindu') return d.designType === 'hindu' || d.categoryId === 'hindu-design';
+    return true;
+  });
 
   const [currentDesign, setCurrentDesign] = useState(
-    selectedDesign || hinduDesigns[0] || {
+    selectedDesign || allStageDesigns[0] || {
       id: 'mor-phool-tabla',
       name: 'मोर फूल तबला',
       price: 400,
@@ -112,15 +126,58 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
                   <Sparkles className="w-4 h-4 text-brand-gold-600" />
                   <span>चयनित डिजाइन (Selected Design):</span>
                 </span>
-                <span className="text-xs font-black text-brand-purple-900 bg-brand-gold-400/30 px-2.5 py-0.5 rounded-full border border-brand-gold-400">
+                <span className={`text-xs font-black px-2.5 py-0.5 rounded-full border ${
+                  currentDesign?.designType === 'islamic' || currentDesign?.categoryId === 'islamic-design'
+                    ? 'text-emerald-950 bg-emerald-300/40 border-emerald-400'
+                    : 'text-brand-purple-900 bg-brand-gold-400/30 border-brand-gold-400'
+                }`}>
+                  {currentDesign?.designType === 'islamic' ? '🌙 ' : '🕉️ '}
                   {currentDesign?.name || 'मोर फूल तबला'}
                 </span>
               </div>
 
+              {/* Ceremony Category Switcher Pills */}
+              <div className="flex items-center gap-1 mb-2 pb-1 border-b border-brand-purple-200/60">
+                <button
+                  type="button"
+                  onClick={() => setActiveCategoryFilter('all')}
+                  className={`text-[11px] font-bold px-2 py-0.5 rounded-lg transition-all ${
+                    activeCategoryFilter === 'all'
+                      ? 'bg-brand-purple-900 text-white shadow-2xs'
+                      : 'bg-white text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  सभी ({allStageDesigns.length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveCategoryFilter('islamic')}
+                  className={`text-[11px] font-bold px-2 py-0.5 rounded-lg transition-all flex items-center gap-1 ${
+                    activeCategoryFilter === 'islamic'
+                      ? 'bg-emerald-700 text-white shadow-2xs'
+                      : 'bg-white text-emerald-800 hover:bg-emerald-50'
+                  }`}
+                >
+                  <span>🌙 इस्लामिक निकाह ({allStageDesigns.filter(d => d.designType === 'islamic' || d.categoryId === 'islamic-design').length})</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveCategoryFilter('hindu')}
+                  className={`text-[11px] font-bold px-2 py-0.5 rounded-lg transition-all flex items-center gap-1 ${
+                    activeCategoryFilter === 'hindu'
+                      ? 'bg-amber-600 text-white shadow-2xs'
+                      : 'bg-white text-amber-800 hover:bg-amber-50'
+                  }`}
+                >
+                  <span>🕉️ हिन्दू विवाह ({allStageDesigns.filter(d => d.designType === 'hindu' || d.categoryId === 'hindu-design').length})</span>
+                </button>
+              </div>
+
               {/* Quick Design Switcher Badges */}
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {hinduDesigns.map((d) => {
+              <div className="flex flex-wrap gap-1.5 pt-0.5 max-h-36 overflow-y-auto pr-1">
+                {filteredDesigns.map((d) => {
                   const isSelected = currentDesign?.id === d.id || currentDesign?.name === d.name;
+                  const isIslamic = d.designType === 'islamic' || d.categoryId === 'islamic-design';
                   return (
                     <button
                       key={d.id}
@@ -128,11 +185,16 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
                       onClick={() => handleDesignChange(d)}
                       className={`text-xs font-semibold px-2.5 py-1 rounded-xl transition-all cursor-pointer flex items-center gap-1 border ${
                         isSelected
-                          ? 'bg-brand-purple-900 text-white border-brand-purple-900 shadow-xs'
-                          : 'bg-white hover:bg-brand-purple-100/60 text-slate-700 border-slate-200'
+                          ? isIslamic
+                            ? 'bg-emerald-700 text-white border-emerald-700 shadow-xs ring-1 ring-emerald-300'
+                            : 'bg-brand-purple-900 text-white border-brand-purple-900 shadow-xs ring-1 ring-brand-gold-400'
+                          : isIslamic
+                            ? 'bg-emerald-50/70 hover:bg-emerald-100/80 text-emerald-950 border-emerald-200'
+                            : 'bg-white hover:bg-brand-purple-100/60 text-slate-700 border-slate-200'
                       }`}
                     >
-                      <span>{d.name}</span>
+                      <span>{isIslamic ? '🌙' : '🕉️'}</span>
+                      <span className="truncate max-w-[150px]">{d.name}</span>
                       {isSelected && <span className="text-[10px]">✓</span>}
                     </button>
                   );
@@ -368,7 +430,7 @@ export default function LiveNamePreviewer({ selectedDesign, onSelectDesign }) {
                     </span>
                     
                     <span className="text-lg sm:text-xl font-serif font-black text-brand-gold-300 px-1 animate-pulse">
-                      संग
+                      {currentDesign?.designType === 'islamic' ? 'WEDS' : 'संग'}
                     </span>
 
                     <span className="font-serif font-bold text-2xl sm:text-3xl text-amber-900 thermocol-glitter-gold px-3.5 py-1.5 rounded-xl thermocol-cutout-preview border border-amber-400 inline-block shadow-lg">
