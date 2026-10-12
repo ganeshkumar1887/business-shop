@@ -208,45 +208,45 @@ export default function WeddingSection() {
               return (
                 <div
                   key={idx}
-                  className={`relative overflow-hidden ${service.theme.cardBg} p-3.5 rounded-xl sm:rounded-2xl border shadow-2xs hover:shadow-md transition-all duration-200 group hover:-translate-y-1 flex flex-col justify-between`}
+                  className={`relative overflow-hidden ${service.theme.cardBg} p-4 rounded-2xl border shadow-2xs hover:shadow-md transition-all duration-200 group hover:-translate-y-1 flex flex-col justify-between`}
                 >
                   <div>
                     {/* Top Bar: Icon + Category Badge */}
-                    <div className="flex items-center justify-between gap-2 mb-1.5 relative z-10">
+                    <div className="flex items-center justify-between gap-2 mb-2 relative z-10">
                       <div className="flex items-center gap-2">
-                        <div className={`w-8 h-8 rounded-lg ${service.theme.iconBg} border flex items-center justify-center shadow-xs group-hover:scale-110 transition-all`}>
+                        <div className={`w-8 h-8 rounded-xl ${service.theme.iconBg} border flex items-center justify-center shadow-xs group-hover:scale-105 transition-all`}>
                           <Icon className="w-4 h-4" />
                         </div>
-                        <span className={`text-[10px] font-sans font-bold ${service.theme.hindiTagBg} px-1.5 py-0.5 rounded border shadow-2xs`}>
+                        <span className={`text-[11px] font-hindi font-semibold ${service.theme.hindiTagBg} px-2 py-0.5 rounded-md border shadow-2xs`}>
                           {service.hindiTitle}
                         </span>
                       </div>
                       
-                      <span className={`text-[9px] font-outfit font-extrabold ${service.theme.badgeBg} border px-2 py-0.5 rounded-full uppercase tracking-wider shadow-2xs`}>
+                      <span className={`text-[10px] font-outfit font-bold ${service.theme.badgeBg} border px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-2xs`}>
                         {service.tag}
                       </span>
                     </div>
 
-                    {/* Card Title */}
-                    <h4 className={`font-serif font-black text-sm sm:text-base ${service.theme.titleColor} mb-0.5 transition-colors tracking-tight relative z-10`}>
+                    {/* Card Title - Clean Modern Luxury Typography */}
+                    <h4 className={`font-outfit font-extrabold text-base sm:text-[17px] ${service.theme.titleColor} mb-1 transition-colors tracking-tight relative z-10 leading-snug`}>
                       {service.title}
                     </h4>
 
-                    {/* Description */}
-                    <p className={`font-outfit text-xs ${service.theme.descColor} leading-snug font-medium relative z-10`}>
+                    {/* Description - Clean Readable Sans */}
+                    <p className={`font-sans text-xs sm:text-[12.5px] ${service.theme.descColor} leading-relaxed font-normal relative z-10`}>
                       {service.desc}
                     </p>
                   </div>
 
                   {/* Bottom Compact Prompt */}
-                  <div className={`pt-2 mt-2 border-t ${service.theme.footerBorder} flex items-center justify-between text-[10px] font-outfit font-bold relative z-10`}>
-                    <span className="text-slate-600 flex items-center gap-1">
-                      <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                  <div className={`pt-2.5 mt-2.5 border-t ${service.theme.footerBorder} flex items-center justify-between text-[11px] font-outfit relative z-10`}>
+                    <span className="text-slate-600 font-medium flex items-center gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                       <span>100% Customized</span>
                     </span>
-                    <span className={`inline-flex items-center gap-0.5 ${service.theme.accent} group-hover:translate-x-1 transition-transform`}>
+                    <span className={`inline-flex items-center gap-1 font-bold ${service.theme.accent} group-hover:translate-x-1 transition-transform`}>
                       <span>Order</span>
-                      <ChevronRight className="w-3 h-3" />
+                      <ChevronRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
 

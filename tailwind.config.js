@@ -58,6 +58,7 @@ export default {
         serif: ['"Playfair Display"', 'Georgia', 'serif'],
         sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
         outfit: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
+        hindi: ['"Noto Sans Devanagari"', '"Plus Jakarta Sans"', 'sans-serif'],
         cinzel: ['"Cinzel"', 'serif'],
         'cinzel-dec': ['"Cinzel Decorative"', '"Cinzel"', 'serif'],
         handwriting: ['"Great Vibes"', 'cursive'],
