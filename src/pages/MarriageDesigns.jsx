@@ -5,9 +5,6 @@ import {
   Crown, 
   Sparkles, 
   MessageCircle, 
-  Moon, 
-  Cake, 
-  ArrowRight,
   ArrowLeft,
   Home,
   CheckCircle2
@@ -295,92 +292,6 @@ export default function MarriageDesigns({ onQuickView, onOrderNow }) {
               </button>
             );
           })}
-        </div>
-
-        {/* 3 Visual Spotlight Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
-          
-          {/* Hindu Design Spotlight Card */}
-          <div 
-            onClick={() => handleTabChange('hindu')}
-            className={`rounded-3xl p-6 border transition-all duration-300 cursor-pointer shadow-sm hover:shadow-luxury ${
-              activeTab === 'hindu' 
-                ? 'bg-amber-50/90 border-amber-400 ring-2 ring-amber-400/40 shadow-lg' 
-                : 'bg-white hover:bg-amber-50/40 border-brand-cream-300'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-3xl">🕉️</span>
-              <span className="text-xs font-extrabold text-amber-900 bg-amber-200/70 border border-amber-300 px-3 py-1 rounded-full">
-                शुभ विवाह स्पेशल
-              </span>
-            </div>
-            <h3 className="font-serif font-bold text-lg text-brand-purple-950 mb-1">
-              हिन्दू विवाह डिजाइन्स
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed mb-3">
-              मंडप स्टेज नाम, पारंपरिक मोर-कलश बोर्ड्स, शुभ विवाह कटआउट्स और दूल्हा-दुल्हन हिंदी/इंग्लिश अक्षर।
-            </p>
-            <div className="flex items-center gap-1 text-xs font-bold text-amber-800 group-hover:translate-x-1 transition-transform">
-              <span>डिजाइन्स देखें</span>
-              <span>→</span>
-            </div>
-          </div>
-
-          {/* Islamic Design Spotlight Card */}
-          <div 
-            onClick={() => handleTabChange('islamic')}
-            className={`rounded-3xl p-6 border transition-all duration-300 cursor-pointer shadow-sm hover:shadow-luxury ${
-              activeTab === 'islamic' 
-                ? 'bg-emerald-50/90 border-emerald-400 ring-2 ring-emerald-400/40 shadow-lg' 
-                : 'bg-white hover:bg-emerald-50/40 border-brand-cream-300'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-3xl">🌙</span>
-              <span className="text-xs font-extrabold text-emerald-900 bg-emerald-200/70 border border-emerald-300 px-3 py-1 rounded-full">
-                निकाह मुबारक
-              </span>
-            </div>
-            <h3 className="font-serif font-bold text-lg text-brand-purple-950 mb-1">
-              इस्लामिक निकाह डिजाइन्स
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed mb-3">
-              निकाह मुबारक 3D बोर्ड्स, वलीमा वेलकम ईजल साइन्स, चांद-तारा फ्लोरल आर्क और खूबसूरत उर्दू कैलीग्राफी।
-            </p>
-            <div className="flex items-center gap-1 text-xs font-bold text-emerald-800 group-hover:translate-x-1 transition-transform">
-              <span>डिजाइन्स देखें</span>
-              <span>→</span>
-            </div>
-          </div>
-
-          {/* Birthday Design Spotlight Card (Light Blue) */}
-          <div 
-            onClick={() => handleTabChange('birthday')}
-            className={`rounded-3xl p-6 border transition-all duration-300 cursor-pointer shadow-sm hover:shadow-luxury ${
-              activeTab === 'birthday' 
-                ? 'bg-sky-50/90 border-sky-400 ring-2 ring-sky-400/40 shadow-lg' 
-                : 'bg-white hover:bg-sky-50/40 border-brand-cream-300'
-            }`}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-3xl">🎂</span>
-              <span className="text-xs font-extrabold text-sky-900 bg-sky-200/70 border border-sky-300 px-3 py-1 rounded-full">
-                केक टेबल डेकोर
-              </span>
-            </div>
-            <h3 className="font-serif font-bold text-lg text-brand-purple-950 mb-1">
-              बर्थडे सेलिब्रेशन डिजाइन्स
-            </h3>
-            <p className="text-xs text-slate-600 leading-relaxed mb-3">
-              कस्टमाइज्ड 3D नाम व उम्र कटआउट्स, बच्चों के कार्टून थीम्स, बेबी वेलकम सेटअप और LED ग्लो बैकड्रॉप।
-            </p>
-            <div className="flex items-center gap-1 text-xs font-bold text-sky-800 group-hover:translate-x-1 transition-transform">
-              <span>डिजाइन्स देखें</span>
-              <span>→</span>
-            </div>
-          </div>
-
         </div>
 
         {/* Live Interactive Board Simulator */}

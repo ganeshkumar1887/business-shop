@@ -76,7 +76,7 @@ export function getCustomDesignQuoteUrl(designData = {}) {
  * WhatsApp message for live interactive name board customizer
  */
 export function getLiveCustomizerUrl(customizerState) {
-  const { groomName, brideName, baratFrom, baratTo, eventDate, deliveryDate, designName, includeSmallBoard, totalPrice } = customizerState;
+  const { groomName, brideName, baratFrom, baratTo, eventDate, deliveryDate, designName, includeSmallBoard, totalPrice, lang } = customizerState;
   
   const price = totalPrice || (includeSmallBoard ? 450 : 400);
   const smallBoardText = includeSmallBoard ? 'हाँ (Yes) — ₹50 शामिल' : 'नहीं (No)';
@@ -84,6 +84,7 @@ export function getLiveCustomizerUrl(customizerState) {
   let message = `🛍️ *नया कस्टमाइज्ड 3D थर्मोकोल बोर्ड ऑर्डर — ${SHOP_CONFIG.shopName}*\n\n`;
   message += `🎨 *चयनित डिजाइन (Selected Design):* ${designName || 'मोर फूल तबला'}\n`;
   message += `💰 *कुल मूल्य (Total Price):* ₹${price}\n`;
+  message += `🌐 *अक्षर भाषा (Script):* ${lang === 'en' ? 'English' : 'हिंदी (Hindi)'}\n`;
   message += `📦 *छोटा बोर्ड (Small Gate Board):* ${smallBoardText}\n\n`;
   message += `💍 *विवाह विवरण (Wedding Details):*\n`;
   message += `• दूल्हा (Groom): ${groomName || 'N/A'}\n`;

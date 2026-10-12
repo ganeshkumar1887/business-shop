@@ -167,7 +167,6 @@ export default function OrderNowModal({ product, isOpen, onClose }) {
                   required
                   value={groomName}
                   onChange={(e) => setGroomName(e.target.value)}
-                  placeholder={isHindi ? 'उदा. डा. दिग्विजय या विकास' : 'e.g. Dr. Digvijay or Vikas'}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-semibold focus:ring-2 focus:ring-brand-purple-600 focus:outline-none bg-brand-cream-50/40"
                 />
               </div>
@@ -181,7 +180,6 @@ export default function OrderNowModal({ product, isOpen, onClose }) {
                   required
                   value={brideName}
                   onChange={(e) => setBrideName(e.target.value)}
-                  placeholder={isHindi ? 'उदा. डा. मीनू मोहन या बबिता' : 'e.g. Dr. Meenu Mohan or Babita'}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-semibold focus:ring-2 focus:ring-brand-purple-600 focus:outline-none bg-brand-cream-50/40"
                 />
               </div>
@@ -205,7 +203,6 @@ export default function OrderNowModal({ product, isOpen, onClose }) {
                   required
                   value={baratFrom}
                   onChange={(e) => setBaratFrom(e.target.value)}
-                  placeholder={isHindi ? 'उदा. तरवैया बंगरा / सिधवल' : 'e.g. Tarwaiya Bangra'}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium focus:ring-2 focus:ring-brand-purple-600 focus:outline-none bg-brand-cream-50/40"
                 />
               </div>
@@ -219,7 +216,6 @@ export default function OrderNowModal({ product, isOpen, onClose }) {
                   required
                   value={baratTo}
                   onChange={(e) => setBaratTo(e.target.value)}
-                  placeholder={isHindi ? 'उदा. खलपुरा / द मंडप पैलेस सिवान' : 'e.g. Khelpura / Mandap Palace'}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-medium focus:ring-2 focus:ring-brand-purple-600 focus:outline-none bg-brand-cream-50/40"
                 />
               </div>
@@ -237,7 +233,6 @@ export default function OrderNowModal({ product, isOpen, onClose }) {
                 required
                 value={eventDate}
                 onChange={(e) => setEventDate(e.target.value)}
-                placeholder={isHindi ? 'उदा. 11.7.2026 या 7.7.26' : 'e.g. 11.7.2026'}
                 className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-semibold focus:ring-2 focus:ring-brand-purple-600 focus:outline-none"
               />
             </div>
